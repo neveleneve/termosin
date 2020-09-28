@@ -17,7 +17,7 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="/">Beranda</a></li>
-                                    <li><a href="/check">Cek Pembelian</a> </li>
+                                    <li><a href="/cek-pembelian">Cek Pembelian</a> </li>
                                     <li><a href="/contact">Kontak</a></li>
                                     <li><a href="/about">Tentang</a> </li>
                                 </ul>

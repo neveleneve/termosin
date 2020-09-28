@@ -36,6 +36,7 @@
     <footer>
         @include('template.nav.footer')
     </footer>
+    <script data-ad-client="ca-pub-6496152081130759" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src="{{asset('assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
     <script src="{{asset('assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
     <script src="{{asset('assets/js/popper.min.js')}}"></script>

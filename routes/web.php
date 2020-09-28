@@ -14,4 +14,8 @@ Route::get('/about', function(){
 
 Route::get('/item/{id}', 'ItemController@show');
 
+Route::get('/cek-pembelian', function(){
+    return view('cekpembelian');
+});
+
 

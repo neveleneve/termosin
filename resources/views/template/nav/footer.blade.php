@@ -23,8 +23,8 @@
                         <div class="footer-tittle">
                             <h4>Quick Access</h4>
                             <ul>
-                                <li><a href="{{url('/about')}}">About Us</a></li>
-                                <li><a href="{{url('/contact')}}">Contact Us</a></li>
+                                <li><a href="{{url('/about')}}">Tentang Kami</a></li>
+                                <li><a href="{{url('/contact')}}">Kontak</a></li>
                             </ul>
                         </div>
                     </div>

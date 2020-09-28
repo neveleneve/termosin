@@ -6,7 +6,6 @@
 @section('content')
 @include('template.loading')
 <div class="slider-area ">
-    <!-- Mobile Menu -->
     <div class="single-slider slider-height2 d-flex align-items-center"
         data-background="{{asset('assets/img/hero/category.jpg')}}">
         <div class="container">

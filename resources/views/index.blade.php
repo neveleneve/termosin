@@ -5,10 +5,8 @@
 @section('content')
 @include('template.loading')
 <div class="slider-area ">
-    <!-- Mobile Menu -->
     <div class="slider-active">
         <div class="single-slider slider-height" data-background="{{asset('images/termosin.jpg')}}">
-
         </div>
     </div>
 </div>
@@ -36,6 +34,9 @@
                                 @else
                                 <div class="new-product">
                                     <span>{{$item->diskon}}%</span>
+                                    @if ($item->diskon >= 35)
+                                    <span>Penawaran Terbaik</span>
+                                    @endif
                                 </div>
                                 @endif
                             </div>
