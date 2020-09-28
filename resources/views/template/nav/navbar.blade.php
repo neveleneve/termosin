@@ -19,7 +19,7 @@
                                     <li><a href="/">Beranda</a></li>
                                     <li><a href="/cek-pembelian">Cek Pembelian</a> </li>
                                     <li><a href="/contact">Kontak</a></li>
-                                    <li><a href="/about">Tentang</a> </li>
+                                    <li><a href="/about">Tentang Kami</a> </li>
                                 </ul>
                             </nav>
                         </div>
