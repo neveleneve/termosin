@@ -18,4 +18,8 @@ Route::get('/cek-pembelian', function(){
     return view('cekpembelian');
 });
 
+Route::get('/cara-pemesanan', function(){
+    return view('carapemesanan');
+});
+
 

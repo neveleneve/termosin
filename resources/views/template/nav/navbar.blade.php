@@ -1,33 +1,29 @@
-<div class="header-area">
+<div class="header-area bg-dark">
     <div class="main-header ">
-        <div class="header-bottom  header-sticky">
+        <div class="header-bottom header-sticky bg-dark">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <!-- Logo -->
                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
                         <div class="logo">
-                            <a href="/"><img src="{{asset('images/logo.png')}}" alt=""></a>
+                            <a href="/"><img src="{{asset('images/logo2.png')}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 
                     </div>
-                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 fix-card">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 fix-card">
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="/">Beranda</a></li>
-                                    <li><a href="/cek-pembelian">Cek Pembelian</a> </li>
-                                    <li><a href="/contact">Kontak</a></li>
-                                    <li><a href="/about">Tentang Kami</a> </li>
+                                    <li><a class="text-light" href="/">Beranda</a></li>
+                                    <li><a class="text-light" href="/cara-pemesanan">Cara Pemesanan</a></li>
+                                    <li><a class="text-light" href="/cek-pembelian">Cek Pembelian</a> </li>
+                                    <li><a class="text-light" href="/contact">Kontak</a></li>
+                                    <li><a class="text-light" href="/about">Tentang Kami</a> </li>
                                 </ul>
                             </nav>
                         </div>
-                        <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
-                            {{-- <li class="d-none d-lg-block"><a href="#" onClick="alert('Fitur Masuk Sedang Dikembangkan. Ditunggu Ya!')" class="btn header-btn">Masuk</a></li> --}}
-                        </ul>
                     </div>
-                    <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
