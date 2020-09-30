@@ -33,44 +33,65 @@
         <div class="col-lg-8">
             <div class="single_product_text text-center">
                 <h3>{{$dataitem[0]->namaitem}}</h3>
+                <ul>
+                    @if ($dataitem[0]->diskonstate == 0)
+                    <li>Rp. {{number_format($dataitem[0]->harga, 0 , ',', '.')}}</li>
+                    @else
+                    @php
+                    $diskon = $dataitem[0]->harga - ($dataitem[0]->harga * $dataitem[0]->diskon / 100)
+                    @endphp
+                    <li> Rp. {{number_format($diskon, 0 , ',', '.')}}</li>
+                    <li class="discount"><s>Rp. {{number_format($dataitem[0]->harga, 0 , ',', '.')}}</s></li>
+                    @endif
+                </ul>
                 <p>
                     {{File::get(public_path('/images/desc/'.$dataitem[0]->id.'.txt'))}}
                 </p>
-                <div class="card_area">
-                    <div class="">
+                <form action="/beli" method="post">
+                    {{ csrf_field() }}
+                    <div class="card_area">
+                        <p>
+
+                        </p>
                         <p>Jumlah Pembelian</p>
                         <div class="product_count d-inline-block">
                             <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                            <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
+                            <input class="product_count_item input-number" type="text" id="jumlah" name="jumlah"
+                                value="1" min="1" max="10">
                             <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                         </div>
-                        <p>
-                            Harga <br>
-                            @if ($dataitem[0]->diskonstate == 1)
-                            Rp.
-                            {{number_format($dataitem[0]->harga - ($dataitem[0]->harga * $dataitem[0]->diskon / 100), 0, ',', '.')}}
-                            @else
-                            Rp. {{number_format($dataitem[0]->harga, 0, ',', '.')}}
-                            @endif
-                        </p>
-                    </div>
-                    <div class="single-element-widget mt-30 text-center">
-                        <h4 class="mb-30">Pilihan Warna</h4>
-                        <div class="default-select" id="default-select">
-                            <select id="warna" name="warna">
-                                @foreach ($datawarna as $item)
-                                <option value="{{ $item->warna }}">{{ $item->warna }}</option>
-                                @endforeach
-                            </select>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-8 offset-2">
+                                <h4 class="mb-30 text-center">Pilihan Warna</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="add_to_cart">
-                        <a href="#" class="btn_3">Beli Sekarang</a>
-                    </div>
-                </div>
+                        <div class="row">
+                            @foreach ($datawarna as $item)
+                            <div class="col-{{12 / count($datawarna)}}">
+                                <div class="form-check">
+                                    <label class="form-check-label ">
+                                        <input type="radio" class="form-check-input" name="warna" id="warna"
+                                            value="{{$item->warna}}" required>
+                                        {{$item->warna}}
+                                    </label>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <input type="hidden" value="{{$dataitem[0]->id}}" id="id" name="id">
+                        <div class="add_to_cart">
+                            <button type="submit" href="#" class="btn_3">Beli Sekarang</button>
+                        </div>
+                </form>
+            </div>
+            <br>
+            <div class="alert alert-warning">
+                Alamat IP Anda <strong> {{ Request::ip() }} </strong>. Alamat IP Anda Tidak Kami Simpan Sampai Anda Melakukan Pemesanan Tanpa Login.
             </div>
         </div>
     </div>
 </div>
-</div>
+
 @endsection

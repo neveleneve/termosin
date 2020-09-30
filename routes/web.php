@@ -22,4 +22,6 @@ Route::get('/cara-pemesanan', function(){
     return view('carapemesanan');
 });
 
+Route::post('/beli', 'PenggunaController@submitdatabelanja');
+
 
