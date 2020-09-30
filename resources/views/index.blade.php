@@ -21,7 +21,7 @@
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                {{-- <div class="row">
+                <div class="row">
                     @foreach ($allproduct as $item)
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="single-product mb-60">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     @endforeach
-                </div> --}}
+                </div>
             </div>
         </div>
         <div class="shop-method-area section-padding30" style="margin-top: -10%">
