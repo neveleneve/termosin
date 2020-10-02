@@ -50,9 +50,6 @@
                 <form action="/beli" method="post">
                     {{ csrf_field() }}
                     <div class="card_area">
-                        <p>
-
-                        </p>
                         <p>Jumlah Pembelian</p>
                         <div class="product_count d-inline-block">
                             <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
@@ -71,15 +68,23 @@
                             @foreach ($datawarna as $item)
                             <div class="col-{{12 / count($datawarna)}}">
                                 <div class="form-check">
-                                    <label class="form-check-label ">
+                                    <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="warna" id="warna"
-                                            value="{{$item->warna}}" required>
+                                            value="{{$item->Id}}" required>
                                         {{$item->warna}}
                                     </label>
                                 </div>
                             </div>
                             @endforeach
                         </div>
+                        @if ($dataitem[0]->diskonstate == 0)
+                        <input type="hidden" value="{{$dataitem[0]->harga}}" id="harga" name="harga">
+                        @else
+                        @php
+                        $diskon = $dataitem[0]->harga - ($dataitem[0]->harga * $dataitem[0]->diskon / 100)
+                        @endphp
+                        <input type="hidden" value="{{$diskon}}" id="harga" name="harga">
+                        @endif
                         <input type="hidden" value="{{$dataitem[0]->id}}" id="id" name="id">
                         <div class="add_to_cart">
                             <button type="submit" href="#" class="btn_3">Beli Sekarang</button>
@@ -88,7 +93,8 @@
             </div>
             <br>
             <div class="alert alert-warning">
-                Alamat IP Anda <strong> {{ Request::ip() }} </strong>. Alamat IP Anda Tidak Kami Simpan Sampai Anda Melakukan Pemesanan Tanpa Login.
+                Alamat IP Anda <strong> {{ Request::ip() }} </strong>. Alamat IP Anda Tidak Kami Simpan Sampai Anda
+                Melakukan Pemesanan Tanpa Login.
             </div>
         </div>
     </div>
