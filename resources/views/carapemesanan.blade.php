@@ -19,7 +19,7 @@
         </div>
     </div>
 </div>
-<section class="contact-section">
+<section class="contact-section mb-3">
     <div class="container">
         <div class="row">
             <div class="col-12">
