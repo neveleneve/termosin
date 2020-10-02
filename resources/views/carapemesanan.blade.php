@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item"
+                    <iframe class="embed-responsive-item" allowFullScreen="true"
                         src="https://drive.google.com/file/d/1FK6ganINiRCZRL_ohoRxs3qtesCTjyEw/preview"></iframe>
                 </div>
             </div>
