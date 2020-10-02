@@ -28,9 +28,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-8 offset-2">
-                
-                <iframe class="embed-responsive" src="https://drive.google.com/file/d/1FK6ganINiRCZRL_ohoRxs3qtesCTjyEw/preview" width="640" height="480"></iframe>
+            <div class="col-8 offset-2">                
+                <iframe class="embed-responsive" src="https://drive.google.com/file/d/1FK6ganINiRCZRL_ohoRxs3qtesCTjyEw/preview"></iframe>
             </div>
         </div>
     </div>
