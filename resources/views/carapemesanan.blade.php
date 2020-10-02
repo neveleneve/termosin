@@ -23,13 +23,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <img class="img-fluid" src="https://hijacksandals.com/wp-content/uploads/2020/08/hto-1x-1536x203.jpg" alt="">
+                <img class="img-fluid" src="https://hijacksandals.com/wp-content/uploads/2020/08/hto-1x-1536x203.jpg">
                 <p>1. Bla bla bla</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-8 offset-2">                
-                <iframe class="embed-responsive" src="https://drive.google.com/file/d/1FK6ganINiRCZRL_ohoRxs3qtesCTjyEw/preview"></iframe>
+            <div class="col-8 offset-2">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                        src="https://drive.google.com/file/d/1FK6ganINiRCZRL_ohoRxs3qtesCTjyEw/preview"></iframe>
+                </div>
             </div>
         </div>
     </div>
