@@ -64,9 +64,9 @@
                                 <h4 class="mb-30 text-center">Pilihan Warna</h4>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row text-left">
                             @foreach ($datawarna as $item)
-                            <div class="col-{{12 / count($datawarna)}}">
+                            <div class="col-3">
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="warna" id="warna"
@@ -87,7 +87,7 @@
                         @endif
                         <input type="hidden" value="{{$dataitem[0]->id}}" id="id" name="id">
                         <div class="add_to_cart">
-                            <button type="submit" href="#" class="btn_3">Beli Sekarang</button>
+                            <button type="button" href="#" class="btn_3">Masukkan Keranjang</button>
                         </div>
                 </form>
             </div>

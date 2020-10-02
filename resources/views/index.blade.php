@@ -10,7 +10,7 @@
         </div>
     </div>
 </div>
-<section class="latest-product-area section-padding">
+<section class="latest-product-area section-padding" style="margin-bottom: -20%">
     <div class="container">
         <div class="row product-btn d-flex">
             <div class="col-xl-4 col-lg-5 col-md-5">
