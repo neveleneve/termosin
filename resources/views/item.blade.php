@@ -64,9 +64,9 @@
                                 <h4 class="mb-30 text-center">Pilihan Warna</h4>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row text-left">
                             @foreach ($datawarna as $item)
-                            <div class="col-{{12 / count($datawarna)}}">
+                            <div class="col-3">
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="warna" id="warna"
