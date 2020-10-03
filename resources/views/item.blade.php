@@ -87,7 +87,7 @@
                         @endif
                         <input type="hidden" value="{{$dataitem[0]->id}}" id="id" name="id">
                         <div class="add_to_cart">
-                            <button type="submit" href="#" class="btn_3">Beli Sekarang</button>
+                            <button type="button" href="#" class="btn_3">Masukkan Keranjang</button>
                         </div>
                 </form>
             </div>

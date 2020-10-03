@@ -1,4 +1,4 @@
-<footer style="margin-top: -15%">
+<footer style="margin-top: -10%">
     <div class="footer-area footer-padding">
         <div class="container">
             <div class="row d-flex">

@@ -19,16 +19,32 @@
         </div>
     </div>
 </div>
-<section class="contact-section">
+<section class="contact-section mb-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <img class="img-fluid" src="https://hijacksandals.com/wp-content/uploads/2020/08/hto-1x-1536x203.jpg">
-                <p>1. Bla bla bla</p>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action">- Kunjungi <strong><a class="text-dark" href="/">Termosin Store</a></strong></li>
+                    <li class="list-group-item list-group-item-action">- Pilih item yang mau kamu beli, sesuaikan jumlah dan warnanya, lalu tekan tombol 'Masukkan Keranjang'</li>
+                </ul>
             </div>
         </div>
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-12">
+                <img class="img-fluid" src="https://hijacksandals.com/wp-content/uploads/2020/08/hto-2-2048x270.jpg">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action">dfgasihdfias</li>
+                    <li class="list-group-item list-group-item-action">xxxxxxxxxxxxxxx</li>
+                    <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+                    <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+                    <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-10 offset-1">
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" allowFullScreen="true"
                     
