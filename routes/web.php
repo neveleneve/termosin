@@ -14,6 +14,10 @@ Route::get('/about', function(){
 
 Route::get('/item/{id}', 'ItemController@show');
 
+Route::get('/keranjang', function(){
+    return view('keranjang');
+});
+
 Route::get('/cek-pembelian', function(){
     return view('cekpembelian');
 });
