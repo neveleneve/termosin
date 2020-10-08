@@ -19,7 +19,7 @@
         </div>
     </div>
 </div>
-<div class="product_image_area">
+<div class="product_image_area" style="margin-bottom: -15%">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -90,14 +90,13 @@
                             <button type="button" href="#" class="btn_3">Masukkan Keranjang</button>
                         </div>
                 </form>
-            </div>
+            </div>            
             <br>
             <div class="alert alert-warning">
                 Alamat IP Anda <strong> {{ Request::ip() }} </strong>. Alamat IP Anda Tidak Kami Simpan Sampai Anda
-                Melakukan Pemesanan Tanpa Login.
+                Melakukan Pemesanan.
             </div>
         </div>
     </div>
 </div>
-
 @endsection
