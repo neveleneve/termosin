@@ -48,10 +48,8 @@
                                 <h5>$360.00</h5>
                             </td>
                             <td>
-                                <div class="product_count">
-                                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                    <input class="input-number" type="text" value="1" min="0" max="10">
-                                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                                <div class="product_count">                                    
+                                    <input class="input-number" type="number" value="1" min="0" max="10">
                                 </div>
                             </td>
                             <td>
