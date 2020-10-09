@@ -3,15 +3,12 @@
         <div class="header-bottom header-sticky bg-dark">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
                         <div class="logo">
                             <a href="/"><img src="{{asset('images/logo2.png')}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-
-                    </div>
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 fix-card">
+                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 fix-card">
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
