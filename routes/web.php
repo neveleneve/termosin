@@ -30,6 +30,6 @@ Route::get('/keranjang', function(){
     return view('keranjang');
 });
 
-Route::post('/beli', 'PenggunaController@submitdatabelanja');
+Route::post('/beli', 'PenggunaController@submitkeranjang');
 
 
