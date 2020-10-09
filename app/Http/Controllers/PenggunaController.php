@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Keranjang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PenggunaController extends Controller
 {
@@ -26,7 +27,13 @@ class PenggunaController extends Controller
 
     public function keranjang(Request $req)
     {
-        $datakeranjang = Keranjang::where('ipaddress', $req->ip())->get();
+        $datakeranjang = DB::select(
+            'select b.namaitem as namabarang, b.img as images, c.warna as warna, k.jumlah as jumlah, k.harga as harga
+            from keranjang as k 
+            join item as b on k.id_item = b.id
+            join item_color as c on k.id_item_color = c.id
+            where k.ipaddress = '.$req->ip()
+        );
         return view('keranjang', [
             'datakeranjang' => $datakeranjang
         ]);

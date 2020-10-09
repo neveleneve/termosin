@@ -39,10 +39,10 @@
                             <td>
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="assets/img/arrivel/arrivel_1.png" alt="" />
+                                        <img src="images/item/{{ $item->images }}" alt="" />
                                     </div>
                                     <div class="media-body">
-                                        <p>{{ $item->id_item }}</p>
+                                        <p>{{ $item->namabarang }}</p>
                                     </div>
                                 </div>
                             </td>
@@ -55,7 +55,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h5> {{$item->id_item_color}} </h5>
+                                <h5> {{$item->warna}} </h5>
                             </td>
                             <td>
                                 <h5>$720.00</h5>
