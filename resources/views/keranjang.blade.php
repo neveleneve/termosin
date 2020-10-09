@@ -60,14 +60,14 @@
                                 <h5> {{$item->warna}} </h5>
                             </td>
                             <td>
-                                <h5>$720.00</h5>
+                                <h5>Rp. {{ number_format($item->harga * $item->jumlah, 0, ",", ".") }} </h5>
                             </td>
                         </tr>
                         @endforeach
                         @else
                         <tr>
                             <td colspan="5">
-                                <h1>Anda Belum Memiliki Item Dikeranjang</h1>
+                                <h3>Anda Belum Memiliki Item Dikeranjang</h3>
                             </td>
                         </tr>
                         @endif
