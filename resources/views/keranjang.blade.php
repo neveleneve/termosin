@@ -34,6 +34,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $total = 0;
+                        @endphp
                         @if ($datakeranjang != null)
                         @foreach ($datakeranjang as $item)
                         <tr>
@@ -61,6 +64,9 @@
                             </td>
                             <td>
                                 <h5>Rp. {{ number_format($item->harga * $item->jumlah, 0, ",", ".") }} </h5>
+                                @php
+                                    $total += $item->harga * $item->jumlah;
+                                @endphp
                             </td>
                         </tr>
                         @endforeach
@@ -71,16 +77,15 @@
                             </td>
                         </tr>
                         @endif
-
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>
-                                <h5>Subtotal</h5>
+                                <h5>Total</h5>
                             </td>
                             <td>
-                                <h5>$2160.00</h5>
+                                <h5>Rp. {{ number_format($total, 0, ",", ".") }}</h5>
                             </td>
                         </tr>
                     </tbody>
