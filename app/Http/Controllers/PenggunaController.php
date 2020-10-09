@@ -32,7 +32,7 @@ class PenggunaController extends Controller
             from keranjang as k 
             join item as b on k.id_item = b.id
             join item_color as c on k.id_item_color = c.id
-            where k.ipaddress = '.$req->ip()
+            where k.ipaddress = "'.$req->ip().'"'
         );
         return view('keranjang', [
             'datakeranjang' => $datakeranjang
