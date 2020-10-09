@@ -22,7 +22,7 @@
 <section class="cart_area section_padding">
     <div class="container">
         <div class="alert alert-warning">
-            <h4 class="text-center">Alamat IP Anda Saat ini : {{Request::ip()}}. Pastikan Alamat IP Anda Tidak Berubah Untuk Melihat Keranjang Anda</h4>
+            <h3 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat IP Anda Tidak Berubah Untuk Melihat Keranjang Anda</h3>
         </div>
         <div class="cart_inner">
             <div class="table-responsive">
