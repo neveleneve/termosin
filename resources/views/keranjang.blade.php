@@ -42,20 +42,20 @@
                                         <img src="assets/img/arrivel/arrivel_1.png" alt="" />
                                     </div>
                                     <div class="media-body">
-                                        <p>Minimalistic shop for multipurpose use</p>
+                                        <p>{{ $item->id_item }}</p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <h5>$360.00</h5>
+                                <h5> {{$item->harga}} </h5>
                             </td>
                             <td>
                                 <div class="product_count">
-                                    <input class="input-number" type="number" value="1" min="0" max="10">
+                                    <input class="input-number" type="number" value=" {{$item->jumlah}} " min="0" max="10">
                                 </div>
                             </td>
                             <td>
-                                <h5>Pink</h5>
+                                <h5> {{$item->id_item_color}} </h5>
                             </td>
                             <td>
                                 <h5>$720.00</h5>

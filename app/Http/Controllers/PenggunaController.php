@@ -26,7 +26,7 @@ class PenggunaController extends Controller
 
     public function keranjang(Request $req)
     {
-        $datakeranjang = Keranjang::where('ipaddress', $req->ip())->get();
+        $datakeranjang = Keranjang::with('')->where('ipaddress', $req->ip())->get();
         return view('keranjang', [
             'datakeranjang' => $datakeranjang
         ]);
