@@ -85,7 +85,7 @@
                         @endphp
                         <input type="hidden" value="{{$diskon}}" id="harga" name="harga">
                         @endif
-                        <input type="hidden" value="{{$dataitem[0]->id}}" id="id" name="id">
+                        <input type="hidden" value="{{$dataitem[0]->id}}" id="id_barang" name="id_barang">
                         <div class="add_to_cart">
                             <button type="submit" href="#" class="btn_3">Masukkan Keranjang</button>
                         </div>
