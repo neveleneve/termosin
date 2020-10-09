@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ItemController@index');
 
-Route::get('/contact', function(){
+Route::get('/kontak', function(){
     return view('contact');
 });
 
-Route::get('/about', function(){
+Route::get('/tentang', function(){
     return view('about');
 });
 
@@ -24,6 +24,10 @@ Route::get('/cek-pembelian', function(){
 
 Route::get('/cara-pemesanan', function(){
     return view('carapemesanan');
+});
+
+Route::get('/keranjang', function(){
+    return view('keranjang');
 });
 
 Route::post('/beli', 'PenggunaController@submitdatabelanja');

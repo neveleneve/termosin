@@ -18,8 +18,9 @@
                                     <li><a class="text-light" href="/">Beranda</a></li>
                                     <li><a class="text-light" href="/cara-pemesanan">Cara Pemesanan</a></li>
                                     <li><a class="text-light" href="/cek-pembelian">Cek Pembelian</a> </li>
-                                    <li><a class="text-light" href="/contact">Kontak</a></li>
-                                    <li><a class="text-light" href="/about">Tentang Kami</a> </li>
+                                    <li><a class="text-light" href="/keranjang">Keranjang</a> </li>
+                                    <li><a class="text-light" href="/kontak">Kontak</a></li>
+                                    <li><a class="text-light" href="/tentang">Tentang Kami</a> </li>
                                 </ul>
                             </nav>
                         </div>
