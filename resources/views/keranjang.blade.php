@@ -26,10 +26,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
+                            <th scope="col">Nama Produk</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Warna</th>
+                            <th scope="col">Sub Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,9 @@
                                 <div class="product_count">                                    
                                     <input class="input-number" type="number" value="1" min="0" max="10">
                                 </div>
+                            </td>
+                            <td>
+                                <h5>Pink</h5>
                             </td>
                             <td>
                                 <h5>$720.00</h5>
