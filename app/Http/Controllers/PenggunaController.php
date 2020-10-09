@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Master_Transaksi;
-use App\Transaksi;
+use App\Keranjang;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 
 class PenggunaController extends Controller
 {
     public function submitkeranjang(Request $req)
     {
         if ($req->has('_token')) {
-            dd($req->all());
+            $datakeranjang = new Request([
+                'ipaddress' => $req->ip(),
+                'id_item' => $req->id_barang,
+                'id_item_color' => $req->warna,
+                'jumlah' => $req->jumlah,
+                'harga' => $req->harga
+            ]);
+            Keranjang::create($datakeranjang->all());
+            return redirect('/item/'.$req->id_barang);
         } else {
-            echo 'error';
+        
         }
     }
 }

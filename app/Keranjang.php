@@ -8,9 +8,10 @@ class Keranjang extends Model
 {
     protected $table = 'keranjang';
     protected $fillable = [
-        'ip_pengguna',
+        'ipaddress',
         'id_item',
+        'id_item_color',
         'jumlah',
-        'bataswaktu'
+        'harga'
     ];
 }
