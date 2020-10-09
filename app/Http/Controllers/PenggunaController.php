@@ -26,6 +26,6 @@ class PenggunaController extends Controller
 
     public function keranjang(Request $req)
     {
-        echo $req->ip();
+        return view('keranjang');
     }
 }
