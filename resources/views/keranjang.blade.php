@@ -39,7 +39,7 @@
                             <td>
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="images/item/{{ $item->images }}" alt="" />
+                                        <img src="{{ asset('/images/item/'.{{ $item->images }}) }}" alt="" />
                                     </div>
                                     <div class="media-body">
                                         <p>{{ $item->namabarang }}</p>
@@ -51,7 +51,8 @@
                             </td>
                             <td>
                                 <div class="product_count">
-                                    <input class="input-number" type="number" value="{{$item->jumlah}}" min="0" max="10">
+                                    <input class="input-number" type="number" value="{{$item->jumlah}}" min="0"
+                                        max="10">
                                 </div>
                             </td>
                             <td>
