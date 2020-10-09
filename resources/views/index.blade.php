@@ -26,7 +26,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="single-product mb-60">
                             <div class="product-img">
-                                <a href="/item/{{ $item->id }}-{{str_replace(' ', '-', $item->namaitem)}}">
+                                <a href="/item/{{ $item->id }}">
                                     <img src="{{asset('images/item/'.$item->img)}}">
                                 </a>
                                 @if ($item->diskonstate == 0)
@@ -41,7 +41,7 @@
                                 @endif
                             </div>
                             <div class="product-caption">
-                                <h4><a href="/item/{{ $item->id }}-{{str_replace(' ', '-', $item->namaitem)}}">{{$item->namaitem}}</a>
+                                <h4><a href="/item/{{ $item->id }}">{{$item->namaitem}}</a>
                                 </h4>
                                 <div class="price">
                                     <ul>
