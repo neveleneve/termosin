@@ -26,9 +26,7 @@ Route::get('/cara-pemesanan', function(){
     return view('carapemesanan');
 });
 
-Route::get('/keranjang', function(){
-    return view('keranjang');
-});
+Route::get('/keranjang', 'PenggunaController@keranjang');
 
 Route::post('/beli', 'PenggunaController@submitkeranjang');
 
