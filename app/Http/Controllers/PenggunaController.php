@@ -12,7 +12,7 @@ class PenggunaController extends Controller
     public function submitkeranjang(Request $req)
     {
         if ($req->has('_token')) {
-            dd($req);
+            dd($req->all());
         } else {
             echo 'error';
         }
