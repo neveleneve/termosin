@@ -39,7 +39,7 @@
                             <td>
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="{{ asset('/images/item/'.{{ $item->images }}) }}" alt="" />
+                                        <img src="{{ asset('/images/item/'.$item->images) }}" alt="" />
                                     </div>
                                     <div class="media-body">
                                         <p>{{ $item->namabarang }}</p>
