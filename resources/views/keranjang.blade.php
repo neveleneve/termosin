@@ -47,7 +47,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h5> {{$item->harga}} </h5>
+                                <h5>Rp. {{ number_format($item->harga, 0, ",", ".") }} </h5>
                             </td>
                             <td>
                                 <div class="product_count">
