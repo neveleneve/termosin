@@ -70,7 +70,7 @@
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="warna" id="warna"
-                                            value="{{$item->Id}}" required>
+                                            value="{{$item->id}}" required>
                                         {{$item->warna}}
                                     </label>
                                 </div>
