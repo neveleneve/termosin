@@ -76,7 +76,7 @@
                         @else
                         <tr>
                             <td colspan="5">
-                                <h3>Anda Belum Memiliki Item Dikeranjang</h3>
+                                <h3 class="text-center">Anda Belum Memiliki Item Dikeranjang</h3>
                             </td>
                         </tr>
                         @endif
