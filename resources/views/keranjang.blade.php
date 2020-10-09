@@ -34,6 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if ($datakeranjang != null)
                         @foreach ($datakeranjang as $item)
                         <tr>
                             <td>
@@ -63,6 +64,14 @@
                             </td>
                         </tr>
                         @endforeach
+                        @else
+                        <tr>
+                            <td colspan="5">
+                                <h1>Anda Belum Memiliki Item Dikeranjang</h1>
+                            </td>
+                        </tr>
+                        @endif
+
                         <tr>
                             <td></td>
                             <td></td>
