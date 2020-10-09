@@ -8,7 +8,7 @@ class ItemColor extends Model
 {
     protected $table = 'item_color';
     protected $fillable = [
-        'Id_barang',
+        'id_item',
         'warna'
     ];
 }

@@ -18,11 +18,10 @@ class ItemController extends Controller
 
     public function show($id)
     {
-        $iditem = $id[0];
-        $item = Item::where('id', $iditem)->get();
+        $item = Item::where('id', $id)->get();
         $namagambar = str_replace('-0.png', '', $item[0]->img);
         $jumlahgambar = count(glob(public_path('images/item/' . $namagambar . '*.png')));
-        $datawarna = ItemColor::where('Id_barang', $iditem)->get();
+        $datawarna = ItemColor::where('id_item', $id)->get();
 
         return view('item', [
             'dataitem' => $item,
