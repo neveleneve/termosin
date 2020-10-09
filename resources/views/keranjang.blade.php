@@ -34,6 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($datakeranjang as $item)
                         <tr>
                             <td>
                                 <div class="media">
@@ -49,7 +50,7 @@
                                 <h5>$360.00</h5>
                             </td>
                             <td>
-                                <div class="product_count">                                    
+                                <div class="product_count">
                                     <input class="input-number" type="number" value="1" min="0" max="10">
                                 </div>
                             </td>
@@ -59,7 +60,8 @@
                             <td>
                                 <h5>$720.00</h5>
                             </td>
-                        </tr>                        
+                        </tr>
+                        @endforeach
                         <tr>
                             <td></td>
                             <td></td>
@@ -70,7 +72,7 @@
                             <td>
                                 <h5>$2160.00</h5>
                             </td>
-                        </tr>                        
+                        </tr>
                     </tbody>
                 </table>
                 <div class="checkout_btn_inner float-right">
