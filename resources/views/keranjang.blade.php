@@ -21,9 +21,11 @@
 </div>
 <section class="container">
     <div class="row">
-        <div class="alert alert-warning">
-            <h5 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat IP
-                Anda Tidak Berubah Untuk Melihat Keranjang Anda</h5>
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <h5 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat IP
+                    Anda Tidak Berubah Untuk Melihat Keranjang Anda</h5>
+            </div>
         </div>
     </div>
     <div class="row">
