@@ -102,11 +102,11 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <input type="submit" class="btn btn-primary" value="Lanjutkan Belanja">
+            <input type="submit" class="btn btn-outline-primary btn-block" value="Lanjutkan Belanja">
         </div>
         <div class="col-4"></div>
         <div class="col-4">
-            <input type="submit" class="btn btn-primary" value="Proses Pesanan">
+            <input type="submit" class="btn btn-outline-primary btn-block" value="Proses Pesanan">
         </div>
     </div>
 
