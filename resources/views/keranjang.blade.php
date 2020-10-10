@@ -95,9 +95,16 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="checkout_btn_inner float-right">
-                    <a class="btn_1" href="#">Continue Shopping</a>
-                    <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                <div class="row">
+                    <div class="col-6">
+                        
+                    </div>
+                    <div class="col-3">
+                        <a class="btn_1" href="#">Continue Shopping</a>
+                    </div>
+                    <div class="col-3">
+                        <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                    </div>
                 </div>
             </div>
         </div>
