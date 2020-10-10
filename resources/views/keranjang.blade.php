@@ -109,7 +109,7 @@
             
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-            <input type="submit" class="btn btn-primary btn-block" value="Proses Pesanan">
+            <input type="submit" class="btn btn-success btn-block" value="Proses Pesanan">
         </div>
     </div>
 </section>
