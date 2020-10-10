@@ -25,7 +25,7 @@
             <h5 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat IP
                 Anda Tidak Berubah Untuk Melihat Keranjang Anda</h5>
         </div>
-        <div class="cart_inner">
+        <div class="row">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
