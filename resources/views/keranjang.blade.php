@@ -103,6 +103,7 @@
         <div class="col-4">
             <a class="btn btn-primary" href="#">Continue Shopping</a>
         </div>
+        <div class="col-4"></div>
         <div class="col-4">
             <a class="btn btn-warning btn" href="#">Proceed to checkout</a>
         </div>
