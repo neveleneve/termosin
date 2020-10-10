@@ -22,7 +22,8 @@
 <section class="cart_area section_padding">
     <div class="container">
         <div class="alert alert-warning">
-            <h5 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat IP Anda Tidak Berubah Untuk Melihat Keranjang Anda</h5>
+            <h5 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat IP
+                Anda Tidak Berubah Untuk Melihat Keranjang Anda</h5>
         </div>
         <div class="cart_inner">
             <div class="table-responsive">
@@ -54,7 +55,8 @@
                                 </div>
                             </td>
                             <td>
-                                <h5>Rp. {{ number_format($item->harga, 0, ",", ".") }} </h5>
+                                <h5>Rp {{ number_format($item->harga, 0, ",", ".") }} </h5>
+                                <input type="hidden" name="harga" id="harga" value="{{$item->harga}}">
                             </td>
                             <td>
                                 <div class="product_count">
@@ -66,7 +68,7 @@
                                 <h5> {{$item->warna}} </h5>
                             </td>
                             <td>
-                                <h5>Rp. {{ number_format($item->harga * $item->jumlah, 0, ",", ".") }} </h5>
+                                <h5>Rp {{ number_format($item->harga * $item->jumlah, 0, ",", ".") }}</h5>
                                 @php
                                 $total += $item->harga * $item->jumlah;
                                 @endphp
