@@ -95,6 +95,8 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="row">
                 <div class="col-5">
 
                 </div>
@@ -105,8 +107,6 @@
                     <a class="btn_1" href="#">Proceed to checkout</a>
                 </div>
             </div>
-            {{-- <div class="row"> --}}
-            {{-- </div> --}}
         </div>
 </section>
 @endsection
