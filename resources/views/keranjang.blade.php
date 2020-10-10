@@ -65,7 +65,7 @@
                         </td>
                         <td>
                             <div class="product_count">
-                                <input class="input-number" id="jumlah{{$item->id}}" name="jumlah{{$item->id}}" type="number" value="{{$item->jumlah}}" min="0" max="10">
+                                <input class="input-number" id="jumlah{{$item->id}}" name="jumlah{{$item->id}}"  oninput="myFunction({{$item->id}})" type="number" value="{{$item->jumlah}}" min="0" max="10">
                             </div>
                         </td>
                         <td>
