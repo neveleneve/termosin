@@ -102,11 +102,11 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <a class="btn btn-primary" href="#">Continue Shopping</a>
+            <input type="submit" class="btn btn-primary" value="Lanjutkan Belanja">
         </div>
         <div class="col-4"></div>
         <div class="col-4">
-            <a class="btn btn-warning btn" href="#">Proceed to checkout</a>
+            <input type="submit" class="btn btn-primary" value="Proses Pesanan">
         </div>
     </div>
 
