@@ -1,6 +1,7 @@
 @extends('template.master')
 @section('title')
 <title>Keranjang - Termosin Store</title>
+<script src="{{asset('assets/js/custom.js')}}"></script>
 @endsection
 
 @section('content')
@@ -60,18 +61,18 @@
                         </td>
                         <td>
                             <h5>Rp {{ number_format($item->harga, 0, ",", ".") }} </h5>
-                            <input type="hidden" name="harga" id="harga" value="{{$item->harga}}">
+                            <input type="hidden" name="harga{{$item->id}}" id="harga{{$item->id}}" value="{{$item->harga}}">
                         </td>
                         <td>
                             <div class="product_count">
-                                <input class="input-number" type="number" value="{{$item->jumlah}}" min="0" max="10">
+                                <input class="input-number" id="jumlah{{$item->id}}" name="jumlah{{$item->id}}" type="number" value="{{$item->jumlah}}" min="0" max="10">
                             </div>
                         </td>
                         <td>
                             <h5> {{$item->warna}} </h5>
                         </td>
                         <td>
-                            <h5>Rp {{ number_format($item->harga * $item->jumlah, 0, ",", ".") }}</h5>
+                            <h5 id="total{{$item->id}}">Rp {{ number_format($item->harga * $item->jumlah, 0, ",", ".") }}</h5>
                             @php
                             $total += $item->harga * $item->jumlah;
                             @endphp

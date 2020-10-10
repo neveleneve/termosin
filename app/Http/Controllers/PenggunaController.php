@@ -28,7 +28,7 @@ class PenggunaController extends Controller
     public function keranjang(Request $req)
     {
         $datakeranjang = DB::select(
-            'select b.namaitem as namabarang, b.img as images, c.warna as warna, k.jumlah as jumlah, k.harga as harga
+            'select k.id as id, b.namaitem as namabarang, b.img as images, c.warna as warna, k.jumlah as jumlah, k.harga as harga
             from keranjang as k 
             join item as b on k.id_item = b.id
             join item_color as c on k.id_item_color = c.id
