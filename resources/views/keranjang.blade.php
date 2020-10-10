@@ -1,7 +1,7 @@
 @extends('template.master')
 @section('title')
 <title>Keranjang - Termosin Store</title>
-<script src="{{asset('assets/js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/custom.js')}}"></script>
 @endsection
 
 @section('content')
