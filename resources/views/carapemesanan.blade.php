@@ -1,6 +1,6 @@
 @extends('template.master')
 @section('title')
-<title>Cek Pembelian - Termosin Store</title>
+<title>Cara Pemesanan - Termosin Store</title>
 @endsection
 
 @section('content')

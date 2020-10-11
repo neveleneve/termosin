@@ -16,12 +16,12 @@ class PenggunaController extends Controller
                 'id_item' => $req->id_barang,
                 'id_item_color' => $req->warna,
                 'jumlah' => $req->jumlah,
-                'harga' => $req->harga
+                'harga' => $req->harga,
+                'status' => '1'
             ]);
             Keranjang::create($datakeranjang->all());
-            return redirect('/item/'.$req->id_barang);
+            return redirect('/item/' . $req->id_barang);
         } else {
-        
         }
     }
 
@@ -32,10 +32,16 @@ class PenggunaController extends Controller
             from keranjang as k 
             join item as b on k.id_item = b.id
             join item_color as c on k.id_item_color = c.id
-            where k.ipaddress = "'.$req->ip().'"'
+            where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
         );
         return view('keranjang', [
             'datakeranjang' => $datakeranjang
         ]);
+    }
+
+    public function hapuskeranjang(Request $req)
+    {
+        Keranjang::where('id', $req->idkeranjang)->delete();
+        return redirect('/keranjang');
     }
 }

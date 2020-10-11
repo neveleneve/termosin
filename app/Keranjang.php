@@ -12,6 +12,7 @@ class Keranjang extends Model
         'id_item',
         'id_item_color',
         'jumlah',
-        'harga'
+        'harga',
+        'status'
     ];
 }

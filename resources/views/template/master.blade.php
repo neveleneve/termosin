@@ -26,10 +26,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179552006-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-179552006-1');
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-179552006-1');
     </script>
 
 </head>
@@ -45,7 +46,7 @@
 
     <footer>
         @include('template.nav.footer')
-    </footer>
+    </footer>    
     <script data-ad-client="ca-pub-5248023251753037" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>    
     <script src="{{asset('assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
     <script src="{{asset('assets/js/vendor/jquery-1.12.4.min.js')}}"></script>

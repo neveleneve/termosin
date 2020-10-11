@@ -28,6 +28,10 @@ Route::get('/cara-pemesanan', function(){
 
 Route::get('/keranjang', 'PenggunaController@keranjang');
 
+Route::get('/checkout', 'PenggunaController@checkout');
+
+Route::post('/deletekeranjang', 'PenggunaController@hapuskeranjang');
+
 Route::post('/beli', 'PenggunaController@submitkeranjang');
 
 
