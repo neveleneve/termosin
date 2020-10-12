@@ -17,7 +17,7 @@ class PenggunaController extends Controller
                 'id_item_color' => $req->warna,
                 'jumlah' => $req->jumlah,
                 'harga' => $req->harga,
-                'status' => '1'
+                'status' => '0'
             ]);
             Keranjang::create($datakeranjang->all());
             return redirect('/item/' . $req->id_barang);
