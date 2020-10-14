@@ -20,7 +20,7 @@ class PenggunaController extends Controller
                 'status' => '0'
             ]);
             Keranjang::create($datakeranjang->all());
-            return redirect('/item/' . $req->id_barang);
+            return redirect('/keranjang');
         } else {
         }
     }
@@ -39,9 +39,34 @@ class PenggunaController extends Controller
         ]);
     }
 
-    public function hapuskeranjang(Request $req)
+    public function hapuskeranjang($id)
     {
-        Keranjang::where('id', $req->idkeranjang)->delete();
+        Keranjang::where('id', $id)->delete();
         return redirect('/keranjang');
+    }
+
+    public function proseskeranjang(Request $req)
+    {
+        $jumlahkeranjang = count($req->idkrj);
+        for ($i = 0; $i < $jumlahkeranjang; $i++) {
+            Keranjang::where('id', $req->idkrj[$i])->update([
+                'jumlah' => $req->jumlah[$i]
+            ]);
+        }
+        return redirect('/checkout');
+    }
+
+    public function checkout(Request $req)
+    {
+        $datakeranjang = DB::select(
+            'select k.id as id, b.namaitem as namabarang, c.warna as warna, k.jumlah as jumlah, k.harga as harga
+                from keranjang as k 
+                join item as b on k.id_item = b.id
+                join item_color as c on k.id_item_color = c.id
+                where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
+        );
+        return view('checkout', [
+            'datakeranjang' => $datakeranjang
+        ]);
     }
 }

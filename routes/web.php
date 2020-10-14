@@ -30,7 +30,9 @@ Route::get('/keranjang', 'PenggunaController@keranjang');
 
 Route::get('/checkout', 'PenggunaController@checkout');
 
-Route::post('/deletekeranjang', 'PenggunaController@hapuskeranjang');
+Route::post('/proseskeranjang', 'PenggunaController@proseskeranjang');
+
+Route::get('/deletekeranjang/{id}', 'PenggunaController@hapuskeranjang');
 
 Route::post('/beli', 'PenggunaController@submitkeranjang');
 

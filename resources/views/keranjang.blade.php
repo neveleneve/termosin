@@ -30,103 +30,127 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Nama Produk</th>
-                        <th scope="col">Harga</th>
-                        <th scope="col">Jumlah</th>
-                        <th scope="col">Warna</th>
-                        <th class="text-right w-25" scope="col">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                    $total = 0;
-                    @endphp
-                    @if ($datakeranjang != null)
-                    @foreach ($datakeranjang as $item)
-                    <tr class="text-nowrap">
-                        <td>
-                            <form action="/deletekeranjang" method="post">
-                                {{ csrf_field() }}
-                                <input type="hidden" id="idkeranjang" name="idkeranjang" value="{{$item->id}}">
-                                <button type="submit" class="btn btn-sm btn-outline-danger btn-block">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                        <td>
-                            <p>
-                                {{ $item->namabarang }}
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                Rp {{ number_format($item->harga, 2, ",", ".") }}
-                            </p>
-                            <input type="hidden" id="harga{{$item->id}}" value="{{$item->harga}}">
-                        </td>
-                        <td>
-                            <input class="form-control-plaintext" id="jumlah{{$item->id}}" name="jumlah{{$item->id}}"
-                                oninput="jumlahbelanja({{$item->id}})" type="number" value="{{$item->jumlah}}" min="1">
-                        </td>
-                        <td>
-                            <p>
-                                {{$item->warna}}
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <input class="form-control-plaintext text-right" id="subtotal{{$item->id}}"
-                                    value="Rp {{ number_format($item->harga * $item->jumlah, 2, ",", ".") }}" disabled>
-                            </p>
-                            <input class="subtotal" type="hidden" id="hiddensubtotal{{$item->id}}"
-                                value="{{$item->harga * $item->jumlah}}">
-                            @php
-                            $total += $item->harga * $item->jumlah;
-                            @endphp
-                        </td>
-                    </tr>
-                    @endforeach
-                    @else
-                    <tr>
-                        <td colspan="6">
-                            <h3 class="text-center">Anda Belum Memiliki Item Dikeranjang</h3>
-                        </td>
-                    </tr>
-                    @endif
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <h5>Total</h5>
-                        </td>
-                        <td>
-                            <input class="form-control-plaintext text-right" id="total" type="text"
-                                value="Rp {{ number_format($total, 2, ",", ".") }}" disabled>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
     <form action="/proseskeranjang" method="post">
+        {{ csrf_field() }}
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Nama Produk</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Warna</th>
+                            <th class="text-right w-25" scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $total = 0;
+                        @endphp
+                        @if ($datakeranjang != null)
+                        @foreach ($datakeranjang as $item)
+                        <tr class="text-nowrap">
+                            <td>
+                                <input type="hidden" name="idkrj[]" id="idkrj" value="{{$item->id}}">
+                                <a href="/deletekeranjang/{{$item->id}}" class="btn btn-sm btn-outline-danger btn-block"
+                                    onclick="return confirm('Hapus Data Dari Keranjang Anda?')">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+
+                            </td>
+                            <td>
+                                <p>
+                                    {{ $item->namabarang }}
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    Rp {{ number_format($item->harga, 2, ",", ".") }}
+                                </p>
+                                <input type="hidden" id="harga{{$item->id}}" value="{{$item->harga}}">
+                            </td>
+                            <td>
+                                <input class="form-control-plaintext" id="jumlah{{$item->id}}" name="jumlah[]"
+                                    oninput="jumlahbelanja({{$item->id}})" type="number" value="{{$item->jumlah}}"
+                                    min="1">
+                            </td>
+                            <td>
+                                <p>
+                                    {{$item->warna}}
+                                </p>
+                            </td>
+                            <td>
+                                @php
+                                $subtotal = 0;
+                                if ($item->jumlah >= 5) {
+                                $subtotal = ($item->jumlah * $item->harga) - (0.15 * $item->jumlah * $item->harga);
+                                }elseif ($item->jumlah >= 10) {
+                                $subtotal = ($item->jumlah * $item->harga) - (0.4 * $item->jumlah * $item->harga);
+                                }else {
+                                $subtotal = ($item->jumlah * $item->harga);
+                                }
+                                @endphp
+                                @if ($item->jumlah >= 10)
+                                <span class="badge badge-danger" id="badge{{$item->id}}" class="badge badge-danger">
+                                    Diskon 40%
+                                </span>
+                                @elseif ($item->jumlah >= 5)
+                                <span class="badge badge-danger" id="badge{{$item->id}}" class="badge badge-danger">
+                                    Diskon 15%
+                                </span>
+                                @else
+                                <span class="badge badge-danger" id="badge{{$item->id}}" class="badge badge-danger"
+                                    hidden>
+                                </span>
+                                @endif
+                                <span class="float-right" name="subtotal{{$item->id}}" id="subtotal{{$item->id}}">
+                                    Rp {{ number_format($subtotal, 2, ",", ".") }}
+                                </span>
+                                <input class="subtotal" type="hidden" id="hiddensubtotal{{$item->id}}"
+                                    value="{{$subtotal}}">
+                                @php
+                                $total += $subtotal;
+                                @endphp
+                            </td>
+                        </tr>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td colspan="6">
+                                <h3 class="text-center">Anda Belum Memiliki Item Dikeranjang</h3>
+                            </td>
+                        </tr>
+                        @endif
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>
+                                <h5>Total</h5>
+                            </td>
+                            <td>
+                                <input class="form-control-plaintext text-right" id="total" type="text"
+                                    value="Rp {{ number_format($total, 2, ",", ".") }}" disabled>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <input type="hidden" id="hiddentotal" value="{{$total}}">
-                <input type="submit" class="btn btn-outline-info btn-block" value="Lanjutkan Belanja">
+                <a href="/" class="btn btn-outline-info btn-block">Lanjutkan Belanja</a>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 mb-2">
 
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-                <a href="/checkout" class="btn btn-outline-success btn-block">Proses Pesanan</a>
+                @if ($datakeranjang != null)
+                <input type="submit" class="btn btn-outline-success btn-block" value="Proses Keranjang">
+                @else
+
+                @endif
             </div>
         </div>
     </form>
@@ -134,13 +158,33 @@
 <script>
     function jumlahbelanja(id) {
         var u = document.getElementById("hiddentotal");
-        var v = document.getElementById("subtotal"+id);
         var w = document.getElementById("total");
+
+        var v = document.getElementById("subtotal"+id);
+        var z = document.getElementById("hiddensubtotal"+id);
+        
         var x = document.getElementById("jumlah"+id);
         var y = document.getElementById("harga"+id);
-        var z = document.getElementById("hiddensubtotal"+id);
-        z.value = x.value * y.value;
-        v.value = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(x.value * y.value);
+        var badge = document.getElementById("badge"+id);
+
+
+
+        var subtotal = 0;
+        if (x.value >= 10) {
+            subtotal = (x.value * y.value) - (0.4 * x.value * y.value);
+            badge.hidden = false;
+            badge.textContent = 'Diskon 40%';
+        }else if (x.value >= 5) {
+            subtotal = (x.value * y.value) - (0.15 * x.value * y.value);
+            badge.hidden = false;
+            badge.textContent = 'Diskon 15%';
+        }else{
+            subtotal = x.value * y.value;
+            badge.hidden = true;
+            badge.textContent = '';
+        }
+        z.value = subtotal;
+        v.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(subtotal);        
         var sum = 0;
         $('.subtotal').each(function(){
             sum += parseFloat(this.value);
