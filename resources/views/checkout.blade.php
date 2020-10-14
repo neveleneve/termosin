@@ -60,7 +60,7 @@
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table table-hover text-nowrap">
-                            <thead class="bg-primary text-light">
+                            <thead class="bg-dark text-light">
                                 <tr>
                                     <th>Item</th>
                                     <th>Warna</th>
@@ -70,7 +70,7 @@
                                     <th class="text-right">Subtotal</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-primary">
+                            <tbody class="table-light">
                                 @foreach ($datakeranjang as $item)
                                 <tr>
                                     <td>{{$item->namabarang}}</td>
@@ -114,7 +114,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot class="bg-primary text-light">
+                            <tfoot class="bg-dark text-light">
                                 <tr>
                                     <th class="text-right" colspan="5">Total</th>
                                     <th class="text-right">Rp {{ number_format($total, 2, ",", ".") }}</th>
@@ -126,7 +126,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a class="mb-3 mt-2 btn btn-lg btn-outline-primary btn-block" href="#">Proses Pembayaran</a>
+                    <a class="mb-3 mt-2 btn btn-lg btn-outline-dark btn-block" href="#">Proses Pembayaran</a>
                 </div>
             </div>
         </div>

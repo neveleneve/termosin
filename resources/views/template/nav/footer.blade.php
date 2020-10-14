@@ -1,5 +1,5 @@
-<footer style="margin-top: -10%">
-    <div class="footer-area footer-padding">
+<footer>
+    <div class="footer-area mt-5 pb-5">
         <div class="container">
             <div class="row d-flex">
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
@@ -21,7 +21,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Quick Access</h4>
+                            <h4>Akses Cepat</h4>
                             <ul>
                                 <li><a href="{{url('/about')}}">Tentang Kami</a></li>
                                 <li><a href="{{url('/contact')}}">Kontak</a></li>

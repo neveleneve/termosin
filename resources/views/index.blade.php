@@ -10,85 +10,100 @@
         </div>
     </div>
 </div>
-<section class="latest-product-area section-padding" style="margin-bottom: -20%">
+<section class="latest-product-area mt-5">
     <div class="container">
-        <div class="row product-btn d-flex">
-            <div class="col-xl-4 col-lg-5 col-md-5">
-                <div class="section-tittle mb-30">
-                    <h2>All Products</h2>
+        <div class="row d-flex">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="mb-30 border-bottom border-dark">
+                    <h1>Produk Kami</h1>
                 </div>
             </div>
         </div>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="row">
-                    @foreach ($allproduct as $item)
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="single-product mb-60">
-                            <div class="product-img">
-                                <a href="/item/{{ $item->id }}">
-                                    <img src="{{asset('images/item/'.$item->img)}}">
-                                </a>
+        <div class="row">
+            @foreach ($allproduct as $item)
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 rounded">
+                <div class="shadow single-product">
+                    <div class="product-img">
+                        <a href="/item/{{ $item->id }}">
+                            <img class="rounded" src="{{asset('images/item/'.$item->img)}}">
+                        </a>
+                        @if ($item->diskonstate == 0)
+
+                        @else
+                        <div class="new-product">
+                            <span>- {{$item->diskon}}%</span>
+                            @if ($item->diskon >= 35)
+                            <span>Best Offer</span>
+                            @endif
+                        </div>
+                        @endif
+                    </div>
+                    <div class="product-caption">
+                        <h4><a href="/item/{{ $item->id }}">{{$item->namaitem}}</a>
+                        </h4>
+                        <div class="price">
+                            <ul class="pb-3">
+                                @if ($item->diskonstate == 0)
+                                <li>Rp. {{number_format($item->harga, 0 , ',', '.')}}</li>
+                                @else
+                                @php
+                                $diskon = $item->harga - ($item->harga * $item->diskon / 100)
+                                @endphp
+                                <li>Rp. {{number_format($diskon, 0 , ',', '.')}}</li>
+                                @endif
                                 @if ($item->diskonstate == 0)
 
                                 @else
-                                <div class="new-product">
-                                    <span>{{$item->diskon}}%</span>
-                                    @if ($item->diskon >= 35)
-                                    <span>Penawaran Terbaik</span>
-                                    @endif
-                                </div>
+                                <span><del class="text-danger">Rp.
+                                        {{number_format($item->harga, 0 , ',', '.')}}</del></span>
                                 @endif
-                            </div>
-                            <div class="product-caption">
-                                <h4><a href="/item/{{ $item->id }}">{{$item->namaitem}}</a>
-                                </h4>
-                                <div class="price">
-                                    <ul>
-                                        @if ($item->diskonstate == 0)
-                                        <li>Rp. {{number_format($item->harga, 0 , ',', '.')}}</li>
-                                        @else
-                                        @php
-                                        $diskon = $item->harga - ($item->harga * $item->diskon / 100)
-                                        @endphp
-                                        <li>Rp. {{number_format($diskon, 0 , ',', '.')}}</li>
-                                        @endif
-                                        @if ($item->diskonstate == 0)
-
-                                        @else
-                                        <li class="discount">Rp. {{number_format($item->harga, 0 , ',', '.')}}</li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
+                            </ul>
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
+            @endforeach
         </div>
-        <div class="shop-method-area section-padding30" style="margin-top: -10%">
+        <div class="mt-5 pt-5 pb-5 rounded bg-dark">
             <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="single-method mb-40">
-                            <i class="ti-package"></i>
-                            <h6>Gratis Ongkos Kirim!</h6>
-                            <p>Gratis Dimanapun Kamu Berada</p>
+                <div class="row d-flex">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-2">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <span class="fa fa-lg fa-archive"></span> 
+                                    Gratis Ongkos Kirim!
+                                </h5>                                
+                                <p class="card-text">
+                                    Gratis Dimanapun Kamu Berada
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="single-method mb-40">
-                            <i class="ti-unlock"></i>
-                            <h6>Pembayaran Aman dan Terjamin!</h6>
-                            <p>Metode Pembayaran Eksklusif</p>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-2">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <span class="fa fa-lg fa-unlock"></span> 
+                                    Pembayaran Mudah!
+                                </h5>                                
+                                <p class="card-text">
+                                    Metode Pembayaran Eksklusif
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="single-method mb-40">
-                            <i class="ti-check"></i>
-                            <h6>Barang Dijamin Berkualitas!</h6>
-                            <p>Jaminan Kualitas Barang</p>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-2 pb-2">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <span class="fa fa-lg fa-check"></span> 
+                                    Barang Dijamin Berkualitas!
+                                </h5>                                
+                                <p class="card-text">
+                                    Jaminan Kualitas Barang
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

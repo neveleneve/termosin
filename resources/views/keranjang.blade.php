@@ -5,7 +5,7 @@
 
 @section('content')
 @include('template.loading')
-<div class="slider-area ">
+<div class="slider-area">
     <div class="single-slider slider-height2 d-flex align-items-center"
         data-background="{{asset('assets/img/hero/category.jpg')}}">
         <div class="container">
@@ -20,13 +20,14 @@
     </div>
 </div>
 <br>
-<section class="container mb-3">
+<section class="container">
     <div class="row">
         <div class="col-12">
             <div class="alert alert-warning">
-                <h5 class="text-center">Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat
-                    IP
-                    Anda Tidak Berubah Untuk Melihat Keranjang Anda</h5>
+                <h5 class="text-center">
+                    Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat
+                    IP Anda Tidak Berubah Untuk Melihat Keranjang Anda
+                </h5>
             </div>
         </div>
     </div>
@@ -35,7 +36,7 @@
         <div class="row">
             <div class="table-responsive">
                 <table class="table">
-                    <thead>
+                    <thead class="bg-dark text-light">
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Nama Produk</th>
@@ -123,29 +124,31 @@
                             </td>
                         </tr>
                         @endif
-                        <tr>
-                            <td colspan="4"></td>
-                            <td>
-                                <h5>Total</h5>
-                            </td>
-                            <td>
-                                <input class="form-control-plaintext text-right" id="total" type="text"
-                                    value="Rp {{ number_format($total, 2, ",", ".") }}" disabled>
-                            </td>
-                        </tr>
                     </tbody>
+                    <tfoot class="bg-dark">
+                        <tr class="text-light">
+                            <th colspan="4"></th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                <input class="form-control-plaintext text-light text-right" id="total" type="text"
+                                    value="Rp {{ number_format($total, 2, ",", ".") }}" disabled>
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-                <input type="hidden" id="hiddentotal" value="{{$total}}">
                 <a href="/" class="btn btn-outline-info btn-block">Lanjutkan Belanja</a>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 mb-2">
 
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                <input type="hidden" id="hiddentotal" value="{{$total}}">
                 @if ($datakeranjang != null)
                 <input type="submit" class="btn btn-outline-success btn-block" value="Proses Keranjang">
                 @else
