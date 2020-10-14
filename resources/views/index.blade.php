@@ -21,8 +21,8 @@
         </div>
         <div class="row">
             @foreach ($allproduct as $item)
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 rounded">
-                <div class="shadow single-product">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="shadow rounded single-product">
                     <div class="product-img">
                         <a href="/item/{{ $item->id }}">
                             <img class="rounded" src="{{asset('images/item/'.$item->img)}}">
@@ -64,46 +64,44 @@
             </div>
             @endforeach
         </div>
-        <div class="mt-5 pt-5 pb-5 rounded bg-dark">
-            <div class="container">
-                <div class="row d-flex">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-2">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="fa fa-lg fa-archive"></span> 
-                                    Gratis Ongkos Kirim!
-                                </h5>                                
-                                <p class="card-text">
-                                    Gratis Dimanapun Kamu Berada
-                                </p>
-                            </div>
+        <div class="mt-5 pt-5 pb-5 border-top border-bottom border-dark">
+            <div class="row d-flex">
+                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span class="fa fa-lg fa-archive"></span>
+                                Gratis Ongkos Kirim!
+                            </h5>
+                            <p class="card-text">
+                                Gratis Dimanapun Kamu Berada
+                            </p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-2">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="fa fa-lg fa-unlock"></span> 
-                                    Pembayaran Mudah!
-                                </h5>                                
-                                <p class="card-text">
-                                    Metode Pembayaran Eksklusif
-                                </p>
-                            </div>
+                </div>
+                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span class="fa fa-lg fa-unlock"></span>
+                                Pembayaran Mudah!
+                            </h5>
+                            <p class="card-text">
+                                Metode Pembayaran Eksklusif
+                            </p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-2 pb-2">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="fa fa-lg fa-check"></span> 
-                                    Barang Dijamin Berkualitas!
-                                </h5>                                
-                                <p class="card-text">
-                                    Jaminan Kualitas Barang
-                                </p>
-                            </div>
+                </div>
+                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 mt-2 pb-2">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span class="fa fa-lg fa-check"></span>
+                                Barang Dijamin Berkualitas!
+                            </h5>
+                            <p class="card-text">
+                                Jaminan Kualitas Barang
+                            </p>
                         </div>
                     </div>
                 </div>
