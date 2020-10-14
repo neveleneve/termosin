@@ -45,7 +45,7 @@
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Warna</th>
                                 <th scope="col"></th>
-                                <th class="text-right w-25" scope="col">Subtotal</th>
+                                <th class="text-right" scope="col">Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,19 +57,18 @@
                             <tr class="text-nowrap">
                                 <td>
                                     <input type="hidden" name="idkrj[]" id="idkrj" value="{{$item->id}}">
-                                    <a href="/deletekeranjang/{{$item->id}}"
-                                        class="btn btn-sm btn-outline-danger btn-block"
+                                    <a title="Hapus Item" href="/deletekeranjang/{{$item->id}}"
+                                        class="mt-2 btn btn-sm btn-outline-danger btn-block"
                                         onclick="return confirm('Hapus Data Dari Keranjang Anda?')">
                                         <i class="fa fa-trash"></i>
                                     </a>
-
                                 </td>
                                 <td>
                                     <input class="form-control-plaintext" type="text" value="{{ $item->namabarang }}">
 
                                 </td>
                                 <td>
-                                    <input class="form-control-plaintext" type="text"
+                                    <input class="form-control-plaintext text-nowarp" type="text"
                                         value="Rp {{ number_format($item->harga, 2, ",", ".") }}">
                                     <input type="hidden" id="harga{{$item->id}}" value="{{$item->harga}}">
                                 </td>
@@ -121,7 +120,7 @@
                             @endforeach
                             @else
                             <tr>
-                                <td colspan="6">
+                                <td colspan="7">
                                     <h3 class="text-center">Anda Belum Memiliki Item Dikeranjang</h3>
                                 </td>
                             </tr>
