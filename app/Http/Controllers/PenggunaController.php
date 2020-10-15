@@ -65,7 +65,7 @@ class PenggunaController extends Controller
                 join item_color as c on k.id_item_color = c.id
                 where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
         );
-        if (count($datakeranjang) > 1) {
+        if (count($datakeranjang) > 0) {
             return view('checkout', [
                 'datakeranjang' => $datakeranjang
             ]);
