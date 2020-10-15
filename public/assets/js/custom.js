@@ -9,8 +9,6 @@ function jumlahbelanja(id) {
     var y = document.getElementById("harga"+id);
     var badge = document.getElementById("badge"+id);
 
-
-
     var subtotal = 0;
     if (x.value >= 10) {
         subtotal = (x.value * y.value) - (0.4 * x.value * y.value);
@@ -33,4 +31,10 @@ function jumlahbelanja(id) {
     });
     u.value = sum;
     w.value = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(sum);
+}
+
+function transaction(name) {
+    var input = document.getElementById('input'+name);
+    var output = document.getElementById('output'+name);
+    output.value = input.value;
 }

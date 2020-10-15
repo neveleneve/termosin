@@ -25,8 +25,8 @@
         <div class="col-12">
             <div class="alert alert-warning">
                 <h5 class="text-center">
-                    Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Pastikan Alamat
-                    IP Anda Tidak Berubah Untuk Melihat Keranjang Anda
+                    Alamat IP Anda Saat ini : <strong> {{Request::ip()}}</strong>. Segera Proses Keranjang Anda Agar
+                    Sistem Kami Tetap Menjaga Keranjang Anda
                 </h5>
             </div>
         </div>
@@ -162,4 +162,4 @@
 @endsection
 @section('customjs')
 <script src="{{asset('assets/js/custom.js')}}"></script>
-@show
+@endsection
