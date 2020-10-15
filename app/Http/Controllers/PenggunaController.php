@@ -29,7 +29,7 @@ class PenggunaController extends Controller
     {
         $datakeranjang = DB::select(
             'select k.id as id, b.namaitem as namabarang, b.img as images, c.warna as warna, k.jumlah as jumlah, k.harga as harga
-            from keranjang as k 
+            from keranjang as k
             join item as b on k.id_item = b.id
             join item_color as c on k.id_item_color = c.id
             where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
@@ -60,13 +60,17 @@ class PenggunaController extends Controller
     {
         $datakeranjang = DB::select(
             'select k.id as id, b.namaitem as namabarang, c.warna as warna, k.jumlah as jumlah, k.harga as harga
-                from keranjang as k 
+                from keranjang as k
                 join item as b on k.id_item = b.id
                 join item_color as c on k.id_item_color = c.id
                 where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
         );
-        return view('checkout', [
-            'datakeranjang' => $datakeranjang
-        ]);
+        if (count($datakeranjang) > 1) {
+            return view('checkout', [
+                'datakeranjang' => $datakeranjang
+            ]);
+        }else {
+            return redirect('/keranjang');
+        }
     }
 }

@@ -21,41 +21,8 @@
 </div>
 <section class="container mb-3">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-            <h3 class="text-center">Detail Pengiriman</h3>
-            <form class="row" action="#" method="post">
-                <div class="col-md-12 form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" required>
-                </div>
-                <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" id="nohp" name="hohp" placeholder="Nomor Handphone"
-                        required>
-                </div>
-                <div class="col-md-6 form-group">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail" required>
-                </div>
-                <div class="col-md-12 form-group">
-                    <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat Tujuan"
-                        required></textarea>
-                </div>
-                <div class="col-md-12 form-group">
-                    <input type="text" class="form-control" id="kota" name="kota" placeholder="Kota" required>
-                </div>
-                <div class="col-md-12 form-group">
-                    <input type="text" class="form-control" id="kodepos" name="kodepos" placeholder="Kode Pos" required>
-                </div>
-                <div class="col-md-12 form-group">
-                    <textarea class="form-control" name="catatan" id="catatan"
-                        placeholder="Catatan Pengiriman"></textarea>
-                </div>
-            </form>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="text-center">Pesanan Anda</h3>
-                </div>
-            </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="text-center mb-4 pt-4 border-top border-dark">Pesanan Anda</h3>
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -124,11 +91,36 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <a class="mb-3 mt-2 btn btn-lg btn-outline-dark btn-block" href="#">Proses Pembayaran</a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="text-center">Detail Pengiriman</h3>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" required>
                 </div>
-            </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="nohp" name="hohp" placeholder="Nomor Handphone"
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat Tujuan"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="kota" name="kota" placeholder="Kota" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="kodepos" name="kodepos" placeholder="Kode Pos" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="catatan" id="catatan"
+                        placeholder="Catatan Pengiriman"></textarea>
+                </div>
+                <a class="mb-3 mt-2 btn btn-lg btn-outline-dark btn-block" href="#">Proses Pembayaran</a>
+            </form>
         </div>
     </div>
 </section>
