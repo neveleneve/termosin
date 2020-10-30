@@ -65,12 +65,33 @@ class PenggunaController extends Controller
                 join item_color as c on k.id_item_color = c.id
                 where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
         );
+        $random = substr(str_shuffle("0123456789"), 0, 2);
         if (count($datakeranjang) > 0) {
             return view('checkout', [
-                'datakeranjang' => $datakeranjang
+                'datakeranjang' => $datakeranjang,
+                'unique' => $random
             ]);
         }else {
             return redirect('/keranjang');
+        }
+    }
+
+    public function transaction(Request $req)
+    {
+        if($req->nama == null || $req->nohp == null || $req->alamat == null || $req->kota == null || $req->kodepos == null || $req->catatan == null) {
+            return redirect('/checkout')->with('pemberitahuan', 'Data anda belum lengkap. Silahkan lengkapi data anda!')->with('warna', 'warning');
+        } else {
+            return redirect('cek-pembelian');
+        }
+    }
+
+    public function cekpembelian(Request $req)
+    {
+        if (empty($req->all())) {
+            return view('cekpembelian');
+        }else {
+            echo csrf_token();
+            echo 'jajang';
         }
     }
 }

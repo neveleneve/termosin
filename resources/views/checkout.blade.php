@@ -76,15 +76,20 @@
                                         Rp {{ number_format($subtotal, 2, ",", ".") }}
                                         @php
                                         $total += $subtotal;
+                                        $totalan = $total + $unique;
                                         @endphp
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot class="bg-dark text-light">
-                                <tr>
+                            <tfoot class="text-light">
+                                <tr class="bg-danger">
+                                    <th class="text-right" colspan="5">Kode Unik</th>
+                                    <th class="text-right">Rp {{ number_format($unique, 2, ",", ".") }}</th>
+                                </tr>
+                                <tr class="bg-dark ">
                                     <th class="text-right" colspan="5">Total</th>
-                                    <th class="text-right">Rp {{ number_format($total, 2, ",", ".") }}</th>
+                                    <th class="text-right">Rp {{ number_format($totalan, 2, ",", ".") }}</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -94,6 +99,12 @@
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <h3 class="text-center pb-3 mb-3 border-bottom border-dark">Detail Pengiriman</h3>
+            @if (session('pemberitahuan'))
+            <div class="alert bg-{{session('warna')}} alert-dismissable text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{session('pemberitahuan')}}
+            </div>
+            @endif
             <div class="form-group">
                 <input type="text" class="form-control" id="inputnama" name="inputnama" oninput="transaction('nama')"
                     placeholder="Nama Lengkap" title="Wajib Diisi" required>
@@ -154,6 +165,7 @@
                             </div>
                             <div id="bankbni" class="collapse" aria-labelledby="headingOne" data-parent="#listbank">
                                 <div class="card-body">
+                                    {{-- Cara Pembayaran --}}
                                     <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
                                         data-target="#bniibanking">BNI Internet Banking</button>
                                     <div id="bniibanking" class="collapse">
@@ -178,7 +190,8 @@
                                             , pilih jenis tabungan Anda, lalu pilih lanjut
                                         </p>
                                         <p>
-                                            4. Masukkan jumlah tagihan anda
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan anda
                                         </p>
                                         <p>
                                             5. Pada halaman konfirmasi, masukkan token autentifikasi untuk menyelesaikan
@@ -190,7 +203,7 @@
                                     <div id="bnimbanking" class="collapse">
                                         <p>
                                             1. Login di halaman
-                                            <strong>
+                                            <strong class="text-dark">
                                                 BNI Mobile Banking App
                                             </strong>
                                         </p>
@@ -208,7 +221,8 @@
                                             pada nomor rekening tujuan, lalu pilih lanjut
                                         </p>
                                         <p>
-                                            4. Masukkan jumlah tagihan Anda
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan Anda
                                         </p>
                                         <p>
                                             5. Pada halaman konfirmasi, masukkan token autentifikasi untuk menyelesaikan
@@ -234,30 +248,13 @@
                                             </strong>
                                         </p>
                                         <p>
-                                            4. Masukkan jumlah tagihan Anda
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan Anda
                                         </p>
                                         <p>
                                             5. Konfirmasi pembayaran Anda
                                         </p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- Bank BTN --}}
-                        <div class="card">
-                            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#bankbtn"
-                                aria-expanded="false" aria-controls="collapseTwo">
-                                <i>
-                                    <img class="img-fluid"
-                                        src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/Bank_BTN-32.png">
-                                </i>
-                                <span class="font-weight-bold">
-                                    Bank BTN
-                                </span>
-                            </div>
-                            <div id="bankbtn" class="collapse" aria-labelledby="headingTwo" data-parent="#listbank">
-                                <div class="card-body">
-                                    {{-- Cara Pembayaran --}}
                                 </div>
                             </div>
                         </div>
@@ -276,6 +273,151 @@
                             <div id="bankbri" class="collapse" aria-labelledby="headingTwo" data-parent="#listbank">
                                 <div class="card-body">
                                     {{-- Cara Pembayaran --}}
+                                    <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
+                                        data-target="#briibanking">Internet Banking BRI (Web)</button>
+                                    <div id="briibanking" class="collapse">
+                                        <p>
+                                            1. Login di halaman <strong>
+                                                <a class="text-dark" href="//ib.bri.co.id">
+                                                    ib.bri.co.id
+                                                </a>
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            2. Pilih
+                                            <strong class="text-dark">
+                                                PEMBAYARAN > BRIVA
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            3. Masukkan
+                                            <strong class="text-dark">
+                                                8881 0 0822 8378 4873
+                                            </strong>
+                                            didalam <strong class="text-dark">"Kode Bayar"</strong>,
+                                            lalu pilih <strong class="text-dark">"Kirim"</strong>.
+                                        </p>
+                                        <p>
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan anda, lalu pilih <strong class="text-dark">"Kirim"</strong>.
+                                            Jika Nomor Akun Virtual Benar, informasi transaksi akan muncul.
+                                        </p>
+                                        <p>
+                                            5. Konfirmasi transaksi dengan mengisi password anda dan memilih
+                                            <strong class="text-dark">"Permintaan mToken"</strong> untuk mendapatkan
+                                            mToken yang dikirimkan ke ponsel anda, lalu input ke kolom mToken, lalu
+                                            pilih <strong class="text-dark">"Kirim"</strong>
+                                        </p>
+                                    </div>
+                                    <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
+                                        data-target="#brimbanking">Internet Banking BRI (Mobile)</button>
+                                    <div id="brimbanking" class="collapse">
+                                        <p>
+                                            1. Login di halaman
+                                            <strong class="text-dark">
+                                                BNI Mobile Banking App
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            2. Pilih
+                                            <strong class="text-dark">
+                                                TRANSACTION > VIRTUAL ACCOUNT BILLING
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            3. Pilih tab 'Input Baru', lalu masukkan
+                                            <strong class="text-dark">
+                                                8810 0822 8378 4873
+                                            </strong>
+                                            pada nomor rekening tujuan, lalu pilih lanjut.
+                                        </p>
+                                        <p>
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan Anda.
+                                        </p>
+                                        <p>
+                                            5. Pada halaman konfirmasi, masukkan token autentifikasi untuk menyelesaikan
+                                            transaksi Anda.
+                                        </p>
+                                    </div>
+                                    <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
+                                        data-target="#mbankingbri">Mobile Banking BRI</button>
+                                    <div id="mbankingbri" class="collapse">
+                                        <p>
+                                            1. Masukkan kartu Anda, pilih bahasa, lalu masukkan pin Anda.
+                                        </p>
+                                        <p>
+                                            2. Pilih
+                                            <strong class="text-dark">
+                                                OTHER MENU > TRANSFER > FROM SAVING ACCOUNT > VIRTUAL ACCOUNT BILLING
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            3. Masukkan
+                                            <strong class="text-dark">
+                                                8810 0822 8378 4873
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan Anda.
+                                        </p>
+                                        <p>
+                                            5. Konfirmasi pembayaran Anda.
+                                        </p>
+                                    </div>
+                                    <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
+                                        data-target="#atmbri">ATM BRI</button>
+                                    <div id="atmbri" class="collapse">
+                                        <p>
+                                            1. Masukkan kartu Anda, pilih bahasa, lalu masukkan pin Anda.
+                                        </p>
+                                        <p>
+                                            2. Pilih
+                                            <strong class="text-dark">
+                                                OTHER MENU > TRANSFER > FROM SAVING ACCOUNT > VIRTUAL ACCOUNT BILLING
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            3. Masukkan
+                                            <strong class="text-dark">
+                                                8810 0822 8378 4873
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan Anda.
+                                        </p>
+                                        <p>
+                                            5. Konfirmasi pembayaran Anda.
+                                        </p>
+                                    </div>
+                                    <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
+                                        data-target="#miniatmbri">Mini ATM BRI</button>
+                                    <div id="miniatmbri" class="collapse">
+                                        <p>
+                                            1. Masukkan kartu Anda, pilih bahasa, lalu masukkan pin Anda.
+                                        </p>
+                                        <p>
+                                            2. Pilih
+                                            <strong class="text-dark">
+                                                OTHER MENU > TRANSFER > FROM SAVING ACCOUNT > VIRTUAL ACCOUNT BILLING
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            3. Masukkan
+                                            <strong class="text-dark">
+                                                8810 0822 8378 4873
+                                            </strong>.
+                                        </p>
+                                        <p>
+                                            4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
+                                            tagihan Anda.
+                                        </p>
+                                        <p>
+                                            5. Konfirmasi pembayaran Anda.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -315,11 +457,31 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Dana DOmpet --}}
+                        <div class="card">
+                            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#danadompet"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                <i>
+                                    <img class="img-fluid" width="32px"
+                                        src="https://1.bp.blogspot.com/-LDwtS_oxYgg/XO67MmzGN7I/AAAAAAAAADI/hrSqgCRod3oIS6NtwjOqdY0okl8hwyi6gCLcBGAs/s1600/logo%2Bdana%2Bdompet%2Bdigital%2BPNG.png">
+                                </i>
+                                <span class="font-weight-bold">
+                                    Dana Dompet Digital
+                                </span>
+                            </div>
+                            <div id="danadompet" class="collapse" aria-labelledby="headingTwo" data-parent="#listbank">
+                                <div class="card-body">
+                                    {{-- Cara Pembayaran --}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <form action="/transaction" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="total" value="{{$totalan}}" required>
                         <input type="hidden" id="outputnama" name="nama" value="" required>
                         <input type="hidden" id="outputnohp" name="nohp" value="" required>
                         <input type="hidden" id="outputemail" name="email" value="">
