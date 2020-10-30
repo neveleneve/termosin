@@ -85,10 +85,10 @@
                                 <td>
                                     @php
                                     $subtotal = 0;
-                                    if ($item->jumlah >= 5) {
-                                    $subtotal = ($item->jumlah * $item->harga) - (0.15 * $item->jumlah * $item->harga);
-                                    }elseif ($item->jumlah >= 10) {
+                                    if ($item->jumlah >= 10) {
                                     $subtotal = ($item->jumlah * $item->harga) - (0.4 * $item->jumlah * $item->harga);
+                                    }elseif ($item->jumlah >= 5) {
+                                    $subtotal = ($item->jumlah * $item->harga) - (0.15 * $item->jumlah * $item->harga);
                                     }else {
                                     $subtotal = ($item->jumlah * $item->harga);
                                     }

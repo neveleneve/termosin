@@ -109,24 +109,36 @@
                 <input type="text" class="form-control" id="inputnama" name="inputnama" oninput="transaction('nama')"
                     placeholder="Nama Lengkap" title="Wajib Diisi" required>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="inputnohp" name="inputhohp" oninput="transaction('nohp')"
-                    placeholder="Nomor Handphone" title="Wajib Diisi" required>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">+62</span>
+                </div>
+                <input type="number" class="form-control" placeholder="Nomor Handphone" id="inputnohp" name="inputhohp"
+                    oninput="transaction('nohp')" title="Wajib Diisi">
             </div>
             <div class="form-group">
                 <input type="email" class="form-control" id="inputemail" name="inputemail"
                     oninput="transaction('email')" placeholder="E-Mail">
             </div>
             <div class="form-group">
-                <textarea class="form-control" name="inputalamat" id="inputalamat" oninput="transaction('alamat')"
-                    placeholder="Alamat Tujuan" title="Wajib Diisi" required></textarea>
+                <select class="form-control" id="inputprovinsi" name="inputprovinsi" id="provinsi"
+                    onchange="transaction('provinsi')">
+                    <option disabled selected>Pilih Provinsi</option>
+                    @foreach ($provinsi as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_prov }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="inputkota" name="inputkota" oninput="transaction('kota')"
                     placeholder="Kota" title="Wajib Diisi" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="inputkodepos" name="inputkodepos"
+                <textarea class="form-control" name="inputalamat" id="inputalamat" oninput="transaction('alamat')"
+                    placeholder="Alamat Tujuan" title="Wajib Diisi" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" id="inputkodepos" name="inputkodepos"
                     oninput="transaction('kodepos')" placeholder="Kode Pos" title="Wajib Diisi" required>
             </div>
             <div class="form-group">
@@ -421,7 +433,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         {{-- Bank Mandiri --}}
                         <div class="card">
                             <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#bankmandiri"
@@ -482,11 +494,13 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <form action="/transaction" method="post">
                         {{ csrf_field() }}
-                        <input type="hidden" name="total" value="{{$totalan}}" required>
+                        <input type="hidden" name="total" value="{{$total}}" required>
+                        <input type="hidden" name="kode" value="{{$unique}}" required>
                         <input type="hidden" id="outputnama" name="nama" value="" required>
                         <input type="hidden" id="outputnohp" name="nohp" value="" required>
                         <input type="hidden" id="outputemail" name="email" value="">
                         <input type="hidden" id="outputalamat" name="alamat" value="" required>
+                        <input type="hidden" id="outputprovinsi" name="provinsi" value="" required>
                         <input type="hidden" id="outputkota" name="kota" value="" required>
                         <input type="hidden" id="outputkodepos" name="kodepos" value="" required>
                         <input type="hidden" id="outputcatatan" name="catatan" value="">
