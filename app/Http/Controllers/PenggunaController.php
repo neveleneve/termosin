@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Keranjang;
 use App\Master_Transaksi;
 use App\Provinsi;
+use App\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -85,8 +86,7 @@ class PenggunaController extends Controller
     public function transaction(Request $req)
     {
         if ($req->nama == null || $req->nohp == null || $req->alamat == null || $req->kota == null || $req->kodepos == null || $req->provinsi == null) {
-            // return redirect('/checkout')->with('pemberitahuan', 'Data anda belum lengkap. Silahkan lengkapi data anda!')->with('warna', 'warning');
-            dd($req->all());
+            return redirect('/checkout')->with('pemberitahuan', 'Data anda belum lengkap. Silahkan lengkapi data anda!')->with('warna', 'warning');
         } else {
             $kodetransaksi = null;
             $random = substr(str_shuffle("0123456789"), 0, 5);
@@ -118,21 +118,50 @@ class PenggunaController extends Controller
                 $email = $req->email;
                 $catatan = $req->catatan;
             }
-            Master_Transaksi::create([
-                'id_trx' => $kodetransaksi,
-                'id_pengguna' => $req->ip(),
-                'email' => $email,
-                'nama' => $req->nama,
-                'alamat' => $req->alamat,
-                'provinsi' => $req->provinsi,
-                'kota' => $req->kota,
-                'kodepos' => $req->kodepos,
-                'nohp' => $req->nohp,
-                'catatan' => $catatan,
-                'total' => $req->total,
-                'kode' => $req->kode
-            ]);
-            return redirect('/cek-pembelian')->with('idtrx', $kodetransaksi);
+
+            $datakeranjang = Keranjang::where('ipaddress', $req->ip())->get();
+            $jumlahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->count();
+
+            // dd($req->all());
+            for ($i = 0; $i < $jumlahdatakeranjang; $i++) {
+                $jumlahbarang = $datakeranjang[$i]->jumlah;
+                $idbarang = $datakeranjang[$i]->id_item;
+                $idwarna = $datakeranjang[$i]->id_item_color;
+                $harga = $datakeranjang[$i]->harga;
+                if ($jumlahbarang >= 10) {
+                    $total = ($harga * $jumlahbarang) - ((40 / 100) *  $harga * $jumlahbarang);
+                } elseif ($jumlahbarang >= 5) {
+                    $total = ($harga * $jumlahbarang) - ((15 / 100) *  $harga * $jumlahbarang);
+                } else {
+                    $total = ($harga * $jumlahbarang);
+                }
+                echo 'ID : ' . $idbarang . ' ';
+                echo 'Jumlah : ' . $jumlahbarang . ' ';
+                echo 'Warna : ' . $idwarna . ' ';
+                echo 'Harga : ' . $harga . ' ';
+                echo 'Total : ' . $total . ' ';
+                echo '<br>';
+                // Transaksi::create([
+
+                // ]);
+            }
+            // $ubahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->update();
+            // Master_Transaksi::create([
+            //     'id_trx' => $kodetransaksi,
+            //     'id_pengguna' => $req->ip(),
+            //     'email' => $email,
+            //     'nama' => $req->nama,
+            //     'alamat' => $req->alamat,
+            //     'provinsi' => $req->provinsi,
+            //     'kota' => $req->kota,
+            //     'kodepos' => $req->kodepos,
+            //     'nohp' => $req->nohp,
+            //     'catatan' => $catatan,
+            //     'total' => $req->total,
+            //     'status' => 0,
+            //     'kode' => $req->kode
+            // ]);
+            // return redirect('/cek-pembelian')->with('idtrx', $kodetransaksi);
         }
     }
 

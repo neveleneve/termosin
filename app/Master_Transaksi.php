@@ -20,6 +20,7 @@ class Master_Transaksi extends Model
         'catatan',
         'alamat',
         'total',
-        'kode'
+        'kode',
+        'status'
     ];
 }
