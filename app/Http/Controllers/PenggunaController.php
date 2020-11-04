@@ -85,6 +85,7 @@ class PenggunaController extends Controller
 
     public function transaction(Request $req)
     {
+        $ip = $req->ip();
         if ($req->nama == null || $req->nohp == null || $req->alamat == null || $req->kota == null || $req->kodepos == null || $req->provinsi == null) {
             return redirect('/checkout')->with('pemberitahuan', 'Data anda belum lengkap. Silahkan lengkapi data anda!')->with('warna', 'warning');
         } else {
@@ -119,10 +120,9 @@ class PenggunaController extends Controller
                 $catatan = $req->catatan;
             }
 
-            $datakeranjang = Keranjang::where('ipaddress', $req->ip())->get();
-            $jumlahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->count();
+            $datakeranjang = Keranjang::where('ipaddress', $req->ip())->where('status', 0)->get();
+            $jumlahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->where('status', 0)->count();
 
-            // dd($req->all());
             for ($i = 0; $i < $jumlahdatakeranjang; $i++) {
                 $jumlahbarang = $datakeranjang[$i]->jumlah;
                 $idbarang = $datakeranjang[$i]->id_item;
@@ -135,43 +135,60 @@ class PenggunaController extends Controller
                 } else {
                     $total = ($harga * $jumlahbarang);
                 }
-                echo 'ID : ' . $idbarang . ' ';
-                echo 'Jumlah : ' . $jumlahbarang . ' ';
-                echo 'Warna : ' . $idwarna . ' ';
-                echo 'Harga : ' . $harga . ' ';
-                echo 'Total : ' . $total . ' ';
-                echo '<br>';
-                // Transaksi::create([
-
-                // ]);
+                Transaksi::create([
+                    'id_transaksi' => $kodetransaksi,
+                    'id_item' => $idbarang,
+                    'id_warna' => $idwarna,
+                    'jumlah' => $jumlahbarang,
+                    'total' => $total,
+                    'status' => 0
+                ]);
             }
-            // $ubahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->update();
-            // Master_Transaksi::create([
-            //     'id_trx' => $kodetransaksi,
-            //     'id_pengguna' => $req->ip(),
-            //     'email' => $email,
-            //     'nama' => $req->nama,
-            //     'alamat' => $req->alamat,
-            //     'provinsi' => $req->provinsi,
-            //     'kota' => $req->kota,
-            //     'kodepos' => $req->kodepos,
-            //     'nohp' => $req->nohp,
-            //     'catatan' => $catatan,
-            //     'total' => $req->total,
-            //     'status' => 0,
-            //     'kode' => $req->kode
-            // ]);
-            // return redirect('/cek-pembelian')->with('idtrx', $kodetransaksi);
+            Keranjang::where('ipaddress', $ip)->where('status', 0)->update([
+                'status' => 1
+            ]);
+            Master_Transaksi::create([
+                'id_trx' => $kodetransaksi,
+                'id_pengguna' => $req->ip(),
+                'email' => $email,
+                'nama' => $req->nama,
+                'alamat' => $req->alamat,
+                'provinsi' => $req->provinsi,
+                'kota' => $req->kota,
+                'kodepos' => $req->kodepos,
+                'nohp' => $req->nohp,
+                'catatan' => $catatan,
+                'total' => $req->total,
+                'status' => 0,
+                'kode' => $req->kode
+            ]);
+            return redirect('/cek-pembelian')->with('idtrx', $kodetransaksi);
         }
     }
 
-    public function cekpembelian(Request $req)
+    public function cekpembelian()
     {
-        if (empty($req->all())) {
-            return view('cekpembelian');
+        return view('cekpembelian');
+    }
+
+    public function cekpembeliancari(Request $req)
+    {
+        $idtrx = $req->notrx;
+        $jumlahdatamaster = Master_Transaksi::where('id_trx', $idtrx)->count();
+        if ($jumlahdatamaster > 0) {
+            $datamaster = Master_Transaksi::where('id_trx', $idtrx)->get();
+            $namaprovinsi = Provinsi::where('id', $datamaster[0]->provinsi)->get();
+            $datatransaksi = DB::select("SELECT i.namaitem AS namaitem, i.harga AS harga, t.jumlah AS jumlah, c.warna AS warna, t.total AS total, t.status AS status
+        FROM transaksi AS t JOIN item AS i ON i.id = t.id_item JOIN item_color AS c ON c.id = t.id_warna WHERE t.id_transaksi = '$idtrx'");
+            $jumlahdatatransaksi = Transaksi::where('id_transaksi', $idtrx)->count();
+            return redirect('/cek-pembelian')->with('idtrx', $idtrx)->with([
+                'dataprov' => $namaprovinsi,
+                'datamaster' => $datamaster,
+                'datatrx' => $datatransaksi,
+                'jumlahdatatrx' => $jumlahdatatransaksi
+            ]);
         } else {
-            echo csrf_token();
-            echo 'jajang';
+            echo 'tidak ada';
         }
     }
 }

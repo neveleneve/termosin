@@ -13,7 +13,6 @@ class Transaksi extends Model
         'id_warna',
         'jumlah',
         'total',
-        'status',
-        'bataswaktu'
+        'status'
     ];
 }

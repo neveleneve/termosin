@@ -13,7 +13,10 @@ Route::get('/tentang', function () {
 Route::get('/item/{id}', 'ItemController@show');
 
 Route::get('/cek-pembelian', 'PenggunaController@cekpembelian');
-Route::post('/cek-pembelian', 'PenggunaController@cekpembelian');
+
+Route::post('/cek-pembelian', 'PenggunaController@cekpembeliancari');
+
+
 Route::get('/cara-pemesanan', function () {
     return view('carapemesanan');
 });
