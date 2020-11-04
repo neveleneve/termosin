@@ -119,10 +119,11 @@ class PenggunaController extends Controller
                 $email = $req->email;
                 $catatan = $req->catatan;
             }
-
+            
             $datakeranjang = Keranjang::where('ipaddress', $req->ip())->where('status', 0)->get();
             $jumlahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->where('status', 0)->count();
-
+            $totalan = null;
+            
             for ($i = 0; $i < $jumlahdatakeranjang; $i++) {
                 $jumlahbarang = $datakeranjang[$i]->jumlah;
                 $idbarang = $datakeranjang[$i]->id_item;
@@ -143,6 +144,7 @@ class PenggunaController extends Controller
                     'total' => $total,
                     'status' => 0
                 ]);
+                $totalan += $total;
             }
             Keranjang::where('ipaddress', $ip)->where('status', 0)->update([
                 'status' => 1
@@ -158,7 +160,7 @@ class PenggunaController extends Controller
                 'kodepos' => $req->kodepos,
                 'nohp' => $req->nohp,
                 'catatan' => $catatan,
-                'total' => $req->total,
+                'total' => $totalan,
                 'status' => 0,
                 'kode' => $req->kode
             ]);

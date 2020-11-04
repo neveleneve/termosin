@@ -23,6 +23,7 @@
 $no = 1;
 $idtrxx = null;
 $count = null;
+$totalan = null;
 if (session('idtrx')) {
 $idtrxx = session('idtrx');
 $datatrx = session('datatrx');
@@ -51,9 +52,9 @@ $idtrxx = '';
         </div>
         <br>
         @if (session('datamaster'))
-        <div class="row">
-            <div class="col-12 pb-3 bg-dark text-light">
-                <h2 class="text-center mt-3 text-light">Detail Pengiriman</h2>
+        <div class="row border">
+            <div class="col-12 pb-3">
+                <h2 class="text-center mt-3 text-dark">Detail Pengiriman</h2>
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
@@ -83,7 +84,8 @@ $idtrxx = '';
                             <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                             <td>Total Bayar</td>
                             <td>&nbsp&nbsp:</td>
-                            <td class="text-right">&nbsp&nbspRp.
+                            <td class="text-right">
+                                &nbsp&nbspRp.
                                 {{ number_format(session('datamaster')[0]->total + session('datamaster')[0]->kode, 0, ',','.') }}
                             </td>
                         </tr>
@@ -101,7 +103,9 @@ $idtrxx = '';
                                 @elseif(session('datamaster')[0]->status == 1)
                                 Sudah Dibayar
                                 @elseif(session('datamaster')[0]->status == 2)
-                                Dikemas
+                                Proses
+                                @elseif(session('datamaster')[0]->status == 3)
+                                Transaksi Selesai
                                 @endif
                             </td>
                         </tr>
@@ -125,8 +129,11 @@ $idtrxx = '';
             </div>
         </div>
         <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mt-3 text-dark">Detail Belanja</h2>
+            </div>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -135,14 +142,16 @@ $idtrxx = '';
                             <th>Harga</th>
                             <th>Jumlah</th>
                             <th>Diskon</th>
-                            <th>Total</th>
                             <th>Status</th>
+                            <th class="text-right">Total</th>
                         </tr>
                     </thead>
                     <tbody class="bg-dark text-light">
-                        {{-- {{$datatrx[0]->id_transaksi}} --}}
                         @for ($i = 0; $i < $count; $i++) 
-                            <tr>
+                        <?php
+                            $totalan += $datatrx[$i]->total;
+                        ?>
+                        <tr>
                             <td>{{$no++}}</td>
                             <td>{{$datatrx[$i]->namaitem}}</td>
                             <td>{{$datatrx[$i]->warna}}</td>
@@ -157,11 +166,33 @@ $idtrxx = '';
                                 -
                                 @endif
                             </td>
-                            <td>Rp. {{number_format($datatrx[$i]->total, 0, ',', '.')}}</td>
-                            <td>{{$datatrx[$i]->status}}</td>
-                            </tr>
-                            @endfor
+                            <td>
+                                @if ($datatrx[$i]->status == 0)
+                                Belum Dibayar
+                                @elseif($datatrx[$i]->status == 1)
+                                Sudah Dibayar
+                                @elseif($datatrx[$i]->status == 2)
+                                Dikemas
+                                @elseif($datatrx[$i]->status == 3)
+                                Sedang Dikirim
+                                @elseif($datatrx[$i]->status == 4)
+                                Selesai
+                                @endif
+                            </td>
+                            <td class="text-right">Rp. {{number_format($datatrx[$i]->total, 0, ',', '.')}}</td>
+                        </tr>                        
+                        @endfor
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7" class="text-right">
+                                Jumlah
+                            </td>
+                            <td class="text-right">
+                                Rp. {{number_format($totalan, 0, ',', '.')}}
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
