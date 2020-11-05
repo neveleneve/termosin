@@ -83,7 +83,7 @@
                 <div class="media contact-info">
                     <div class="media-body">
                         <h5><i class="fa fa-envelope"></i> Email</h5>
-                        <h3>admin@jonatha.xyz</h3>
+                        <h3>admin@termosin.store</h3>
                         <p>Berikan Kami Saran Kapanpun, Dimanapun!</p>
                     </div>
                 </div>

@@ -325,31 +325,31 @@
                                         data-target="#brimbanking">Internet Banking BRI (Mobile)</button>
                                     <div id="brimbanking" class="collapse">
                                         <p>
-                                            1. Login di halaman
+                                            1. Buka Aplikasi BRI Mobile dan masuk ke
                                             <strong class="text-dark">
-                                                BNI Mobile Banking App
+                                                Internet Banking BRI
                                             </strong>.
                                         </p>
                                         <p>
                                             2. Pilih
                                             <strong class="text-dark">
-                                                TRANSACTION > VIRTUAL ACCOUNT BILLING
+                                                PEMBAYARAN > BRIVA
                                             </strong>.
                                         </p>
                                         <p>
-                                            3. Pilih tab 'Input Baru', lalu masukkan
+                                            3. Pilih 'Kode Bayar', lalu masukkan
                                             <strong class="text-dark">
                                                 8810 0822 8378 4873
                                             </strong>
-                                            pada nomor rekening tujuan, lalu pilih lanjut.
+                                            pada <strong class="text-dark">Nomor BRIVA</strong>, lalu pilih <strong class="text-dark">OK</strong>.
                                         </p>
                                         <p>
                                             4. Masukkan <strong class="text-dark">{{$totalan}}</strong> ke dalam kolom
-                                            tagihan Anda.
+                                            tagihan Anda, lalu pilih <strong class="text-dark">Kirim</strong> .
                                         </p>
                                         <p>
-                                            5. Pada halaman konfirmasi, masukkan token autentifikasi untuk menyelesaikan
-                                            transaksi Anda.
+                                            5. Konfirmasi pembayaran dengan memasukkan kata sandi internet banking anda, 
+                                            Lalu pilih <strong class="text-dark">Kirim</strong>.
                                         </p>
                                     </div>
                                     <button class="mb-2 btn btn-outline-dark btn-block" data-toggle="collapse"
