@@ -119,11 +119,11 @@ class PenggunaController extends Controller
                 $email = $req->email;
                 $catatan = $req->catatan;
             }
-            
+
             $datakeranjang = Keranjang::where('ipaddress', $req->ip())->where('status', 0)->get();
             $jumlahdatakeranjang = Keranjang::where('ipaddress', $req->ip())->where('status', 0)->count();
             $totalan = null;
-            
+
             for ($i = 0; $i < $jumlahdatakeranjang; $i++) {
                 $jumlahbarang = $datakeranjang[$i]->jumlah;
                 $idbarang = $datakeranjang[$i]->id_item;
@@ -190,7 +190,7 @@ class PenggunaController extends Controller
                 'jumlahdatatrx' => $jumlahdatatransaksi
             ]);
         } else {
-            echo 'tidak ada';
+            return redirect('/cek-pembelian')->with('datakosong', 'Nomor Transaksi Tidak Terdaftar! Silahkan Ulangi!');
         }
     }
 }
