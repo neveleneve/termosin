@@ -5,7 +5,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
                         <div class="logo">
-                            <a href="/"><img src="{{asset('/images/logo_termosin.png')}}" alt=""></a>
+                            <a href="/"><img src="{{asset('/images/logotermosin.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
