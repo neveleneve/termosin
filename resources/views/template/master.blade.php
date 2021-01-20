@@ -36,6 +36,7 @@
 </head>
 
 <body>
+    @include('template.loading')
     <header>
         @include('template.nav.navbar')
     </header>

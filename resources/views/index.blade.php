@@ -3,7 +3,6 @@
 <title>Dashboard - Termosin Store</title>
 @endsection
 @section('content')
-@include('template.loading')
 <div class="slider-area ">
     <div class="slider-active">
         <div class="single-slider slider-height" data-background="{{asset('images/termosin.jpg')}}">
