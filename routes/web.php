@@ -16,6 +16,7 @@ Route::get('/cek-pembelian', 'PenggunaController@cekpembelian');
 
 Route::post('/cek-pembelian', 'PenggunaController@cekpembeliancari');
 
+Route::post('/search', 'PenggunaController@search');
 
 Route::get('/cara-pemesanan', function () {
     return view('carapemesanan');

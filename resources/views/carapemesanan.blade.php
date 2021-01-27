@@ -22,33 +22,53 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <img class="img-fluid" src="https://hijacksandals.com/wp-content/uploads/2020/08/hto-1x-1536x203.jpg">
+                <img class="img-fluid" src="{{asset('images/langkah1.jpg')}}">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-action">- Kunjungi <strong><a class="text-dark" href="/">Termosin Store</a></strong></li>
-                    <li class="list-group-item list-group-item-action">- Pilih item yang mau kamu beli, sesuaikan jumlah dan warnanya, lalu tekan tombol 'Masukkan Keranjang'</li>
+                    <li class="list-group-item list-group-item-action">
+                        - Kunjungi <strong><a class="text-dark" href="/">Termosin Store</a></strong>.
+                    </li>
+                    <li class="list-group-item list-group-item-action">
+                        - Pilih item yang mau kamu beli, sesuaikan jumlah dan warnanya, lalu tekan tombol 'Masukkan
+                        Keranjang'.
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <img class="img-fluid" src="https://hijacksandals.com/wp-content/uploads/2020/08/hto-2-2048x270.jpg">
+                <img class="img-fluid" src="{{asset('images/langkah2.jpg')}}">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-action">dfgasihdfias</li>
-                    <li class="list-group-item list-group-item-action">xxxxxxxxxxxxxxx</li>
-                    <li class="list-group-item list-group-item-action">Morbi leo risus</li>
-                    <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
-                    <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+                    <li class="list-group-item list-group-item-action">
+                        - Setelah selesai memilih barang, kamu bisa langsung lihat ke Menu Keranjang untuk melihat
+                        barang yang kamu beli.
+                    </li>
+                    <li class="list-group-item list-group-item-action">
+                        - Kamu bisa melihat dan mengatur jumlah pembelianmu di Menu Keranjang. Untuk melanjutkan, tekan
+                        tombol Proses Keranjang.
+                    </li>
+                    <li class="list-group-item list-group-item-action">
+                        - Kamu akan diarahkan ke Menu Check Out untuk mengisi detail pengiriman dan data diri.
+                    </li>
+
                 </ul>
             </div>
         </div>
-        <br>
         <div class="row">
-            <div class="col-10 offset-1">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" allowFullScreen="true"
-                    
-                        src="https://drive.google.com/file/d/1FK6ganINiRCZRL_ohoRxs3qtesCTjyEw/preview"></iframe>
-                </div>
+            <div class="col-12">
+                <img class="img-fluid" src="{{asset('images/langkah3.jpg')}}">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action">
+                        - Klik tombol Pilih Metode Pembayaran untuk melihat cara pembayaran sesuai dengan media
+                        pembayaranmu.
+                    </li>
+                    <li class="list-group-item list-group-item-action">
+                        - Klik tombol proses untuk melanjutkan.
+                    </li>
+                    <li class="list-group-item list-group-item-action">
+                        - Kamu akan diarahkan ke halaman Cek Pembelian untuk melihat detail pembelianmu. Simpan nomor
+                        transaksi yang ada di halaman Cek Pembelian agar kamu bisa cek pembelianmu.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

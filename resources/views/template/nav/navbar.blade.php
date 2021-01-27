@@ -8,7 +8,7 @@
                             <a href="/"><img src="{{asset('/images/logotermosin.png')}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <div class="main-menu align-items-center d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
@@ -16,19 +16,18 @@
                                     <li><a class="text-light" href="/cara-pemesanan">Cara Pemesanan</a></li>
                                     <li><a class="text-light" href="/cek-pembelian">Cek Pembelian</a> </li>
                                     <li><a class="text-light" href="/keranjang">Keranjang</a> </li>
-                                    {{-- <li><a class="text-light" href="/kontak">Kontak</a></li> --}}
                                     <li><a class="text-light" href="/tentang">Tentang Kami</a> </li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 fix-card">
-                        <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 fix-card">
+                        <ul class="header-right f-right d-none d-xl-block justify-content-between">
                             <li class="d-none d-lg-block">
                                 <div class="form-box f-right ">
                                     <form action="/search" method="post">
                                         {{ csrf_field() }}
-                                        <input type="text" name="Search" placeholder="Pencarian">
+                                        <input type="text" name="cari" placeholder="Cari">
                                         <div class="search-icon">
                                             <i class="fas fa-search special-tag"></i>
                                         </div>

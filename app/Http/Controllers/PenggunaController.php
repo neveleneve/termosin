@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Keranjang;
 use App\Master_Transaksi;
 use App\Provinsi;
@@ -11,6 +12,21 @@ use Illuminate\Support\Facades\DB;
 
 class PenggunaController extends Controller
 {
+    public function search(Request $data)
+    {
+        $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as number_bought
+            FROM transaksi
+            JOIN item ON transaksi.id_item = item.id
+            WHERE item.namaitem LIKE "%' . $data->cari . '%"
+            GROUP BY item.id
+            ORDER BY number_bought DESC');
+        // $itemcari = Item::where('namaitem', 'LIKE', '%'.$data->cari.'%')->get();
+        return view('pencarian', [
+            'datacari' => $data->cari,
+            'allproduct' => $contoh,
+        ]);
+    }
+
     public function submitkeranjang(Request $req)
     {
         if ($req->has('_token')) {
