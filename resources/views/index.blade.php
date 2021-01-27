@@ -14,7 +14,7 @@
         <div class="row d-flex">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="mb-30 border-bottom border-dark">
-                    <h1>Produk Kami</h1>
+                    <h1>Semua Produk Kami</h1>
                 </div>
             </div>
         </div>
