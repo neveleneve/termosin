@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Route Umum
+
 Route::get('/', 'ItemController@index');
 Route::get('/kontak', function () {
     return view('contact');
