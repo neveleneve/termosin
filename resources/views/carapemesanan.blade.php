@@ -3,6 +3,7 @@
 <title>Cara Pemesanan - Termosin Store</title>
 @endsection
 
+
 @section('content')
 <div class="slider-area ">
     <div class="single-slider slider-height2 d-flex align-items-center"
