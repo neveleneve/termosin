@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class PenggunaController extends Controller
 {
-    public function search(Request $data)
+    public function search($data)
     {
         $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as number_bought
             FROM transaksi

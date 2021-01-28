@@ -25,7 +25,7 @@
                         <ul class="header-right f-right d-none d-xl-block justify-content-between">
                             <li class="d-none d-lg-block">
                                 <div class="form-box f-right ">
-                                    <form action="/search" method="post">
+                                    <form action="/search" method="get">
                                         {{ csrf_field() }}
                                         <input type="text" name="cari" placeholder="Cari">
                                         <div class="search-icon">
