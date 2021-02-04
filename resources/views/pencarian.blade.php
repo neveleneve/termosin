@@ -7,9 +7,23 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="mb-30 border-bottom border-dark">
+                <div class="mb-20 border-bottom border-dark">
                     <h1>Pencarian untuk '{{$datacari}}' </h1>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 mb-20">
+                <form action="/search" method="get">
+                    <input type="hidden" name="cari" value="{{$datacari}}">
+                    <select class="form-control border" name="sort-by" onchange="this.form.submit()">
+                        <option value="jumlahbeli_desc" {{$datasort == 'jumlahbeli_desc' ? 'selected' : null}}>Jumlah Pembelian Terbanyak</option>
+                        <option value="namaitem_asc" {{$datasort == 'namaitem_asc' ? 'selected' : null}}>Nama Item (A-Z)</option>
+                        <option value="namaitem_desc" {{$datasort == 'namaitem_desc' ? 'selected' : null}}>Nama Item (Z-A)</option>
+                        <option value="price_asc" {{$datasort == 'price_asc' ? 'selected' : null}}>Harga (Termurah)</option>
+                        <option value="price_desc" {{$datasort == 'price_desc' ? 'selected' : null}}>Harga (Termahal)</option>
+                    </select>
+                </form>
             </div>
         </div>
         <div class="row">
@@ -61,7 +75,7 @@
                                         {{number_format($item->harga, 0 , ',', '.')}}</del></span>
                                 @endif
                             </ul>
-                            <p>Terjual : {{$item->number_bought}} </p>
+                            <p>Terjual : {{$item->jumlahbeli}} </p>
                         </div>
                     </div>
                 </div>

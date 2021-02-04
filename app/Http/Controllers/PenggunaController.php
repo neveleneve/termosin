@@ -8,21 +8,41 @@ use App\Master_Transaksi;
 use App\Provinsi;
 use App\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
+
 
 class PenggunaController extends Controller
 {
-    public function search($data)
+    public function search()
     {
-        $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as number_bought
+        $dataori = Input::get('cari');
+        $sortby = Input::get('sort-by');
+
+        $datasort = str_replace('_', ' ', $sortby);
+        $datacari = explode(' ', $dataori);
+        $jumlahkata = count($datacari);
+        $where = '';
+        for ($i = 0; $i < $jumlahkata; $i++) {
+            if ($i == 0) {
+                $where .= 'WHERE item.namaitem LIKE "%' . $datacari[$i] . '%"';
+            } else {
+                $where .= ' OR item.namaitem LIKE "%' . $datacari[$i] . '%"';
+            }
+        }
+        // echo $where;
+        $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as jumlahbeli, (item.harga - (item.harga * item.diskon/100)) as price, item.diskon as diskon
             FROM transaksi
             JOIN item ON transaksi.id_item = item.id
-            WHERE item.namaitem LIKE "%' . $data->cari . '%"
+            ' . $where . '
             GROUP BY item.id
-            ORDER BY number_bought DESC');
-        // $itemcari = Item::where('namaitem', 'LIKE', '%'.$data->cari.'%')->get();
+            ORDER BY ' . $datasort);
+
         return view('pencarian', [
-            'datacari' => $data->cari,
+            'datacari' => $dataori,
+            'datasort' => $sortby,
             'allproduct' => $contoh,
         ]);
     }

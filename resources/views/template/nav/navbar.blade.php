@@ -26,11 +26,11 @@
                             <li class="d-none d-lg-block">
                                 <div class="form-box f-right ">
                                     <form action="/search" method="get">
-                                        {{ csrf_field() }}
-                                        <input type="text" name="cari" placeholder="Cari">
+                                        <input type="text" name="cari" placeholder="Cari" value="{{isset($datacari) ? $datacari : null}}">
                                         <div class="search-icon">
                                             <i class="fas fa-search special-tag"></i>
                                         </div>
+                                        <input type="hidden" name="sort-by" value="jumlahbeli_desc">
                                     </form>
                                 </div>
                             </li>
