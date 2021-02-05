@@ -1,4 +1,7 @@
 <div class="header-area">
+    @auth('admin')
+        Anda masuk sebagai admin
+    @endauth
     <div class="main-header ">
         <div class="header-bottom header-sticky bg-dark">
             <div class="container-fluid">

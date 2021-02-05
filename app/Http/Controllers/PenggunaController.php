@@ -21,30 +21,35 @@ class PenggunaController extends Controller
         $dataori = Input::get('cari');
         $sortby = Input::get('sort-by');
 
-        $datasort = str_replace('_', ' ', $sortby);
-        $datacari = explode(' ', $dataori);
-        $jumlahkata = count($datacari);
-        $where = '';
-        for ($i = 0; $i < $jumlahkata; $i++) {
-            if ($i == 0) {
-                $where .= 'WHERE item.namaitem LIKE "%' . $datacari[$i] . '%"';
-            } else {
-                $where .= ' OR item.namaitem LIKE "%' . $datacari[$i] . '%"';
+        if (($dataori == null || $dataori == '') || ($sortby == null || $sortby == '')) {
+            return redirect('/');
+        } else {
+            $datasort = str_replace('_', ' ', $sortby);
+            $datacari = explode(' ', $dataori);
+            $jumlahkata = count($datacari);
+            $where = '';
+            
+            for ($i = 0; $i < $jumlahkata; $i++) {
+                if ($i == 0) {
+                    $where .= 'WHERE item.namaitem LIKE "%' . $datacari[$i] . '%"';
+                } else {
+                    $where .= ' OR item.namaitem LIKE "%' . $datacari[$i] . '%"';
+                }
             }
-        }
-        // echo $where;
-        $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as jumlahbeli, (item.harga - (item.harga * item.diskon/100)) as price, item.diskon as diskon
-            FROM transaksi
-            JOIN item ON transaksi.id_item = item.id
-            ' . $where . '
-            GROUP BY item.id
-            ORDER BY ' . $datasort);
 
-        return view('pencarian', [
-            'datacari' => $dataori,
-            'datasort' => $sortby,
-            'allproduct' => $contoh,
-        ]);
+            $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as jumlahbeli, (item.harga - (item.harga * item.diskon/100)) as price, item.diskon as diskon
+                FROM transaksi
+                JOIN item ON transaksi.id_item = item.id
+                ' . $where . '
+                GROUP BY item.id
+                ORDER BY ' . $datasort);
+
+            return view('pencarian', [
+                'datacari' => $dataori,
+                'datasort' => $sortby,
+                'allproduct' => $contoh,
+            ]);
+        }
     }
 
     public function submitkeranjang(Request $req)

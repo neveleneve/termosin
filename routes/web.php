@@ -1,7 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/administrator/logout', 'AdminController@logout');
+Route::post('/administrator/login', 'AdminController@logging_in');
+
+Auth::routes();
+Route::get('/login', 'AdminController@login')->name('login');
 // Route Umum
 Route::get('/', 'ItemController@index');
 Route::get('/kontak', function () {
@@ -27,14 +33,11 @@ Route::post('/proseskeranjang', 'PenggunaController@proseskeranjang');
 // Route Checkout
 Route::get('/checkout', 'PenggunaController@checkout');
 
-
-// Route Admin
-Route::get('/administrator/login', 'AdminController@login')->name('login');
-
 // Auth Admin
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::get('/administrator', 'AdminController@index');
 
-Route::get('/administrator', 'AdminController@index');
+    Route::get('/administrator/item', 'AdminController@item');
 
-Route::get('/administrator/item', 'AdminController@item');
-
-Route::get('/administrator/transaction', 'AdminController@transaction');
+    Route::get('/administrator/transaction', 'AdminController@transaction');
+});
