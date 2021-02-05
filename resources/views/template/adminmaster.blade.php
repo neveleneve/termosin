@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('title')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="shortcut icon" href="{{url('admin/dist/img/kpum.png')}}" type="image/x-icon">
+    <link type="text/css" rel="shortcut icon" href="{{url('images/termosin.png')}}" type="image/x-icon">
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/fontawesome-free/css/all.min.css')}}">
     <link type="text/css" rel="stylesheet"
         href="{{url('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
