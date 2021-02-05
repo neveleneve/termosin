@@ -36,8 +36,21 @@ Route::get('/checkout', 'PenggunaController@checkout');
 // Auth Admin
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/administrator', 'AdminController@index');
+    // ------------------------------------------------------------------------------//
 
-    Route::get('/administrator/item', 'AdminController@item');
+    Route::get('/administrator/item', 'AdminController@item')->name('item');
+    // ------------------------------------------------------------------------------//
+    Route::get('/administrator/item/edit/{id}', 'AdminController@viewitem')->name('viewitem');
+    Route::post('/administrator/item/edit', 'AdminController@updateitem')->name('updateitem');
+    // ------------------------------------------------------------------------------//
+    Route::get('/administrator/item/images/{id}', 'AdminController@itemimage')->name('imageitem');
+    // ------------------------------------------------------------------------------//
+    Route::get('/administrator/item/hapus/{id}', 'AdminController@hapusitem')->name('hapusitem');
+    // ------------------------------------------------------------------------------//
+    Route::get('/administrator/itemadd', 'AdminController@additem')->name('additem');
 
     Route::get('/administrator/transaction', 'AdminController@transaction');
+    
+    Route::get('/administrator/admin', 'AdminController@admin');
+    
 });

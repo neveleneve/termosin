@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Administrator;
+use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +45,7 @@ class AdminController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             return redirect('administrator');
-        }else {
+        } else {
             return view('login');
         }
     }
@@ -52,5 +53,37 @@ class AdminController extends Controller
     public function index()
     {
         return view('administrator.dashboard');
+    }
+
+    public function item()
+    {
+        $item = Item::paginate(5);
+        return view('administrator.item', [
+            'dataitem' => $item
+        ]);
+    }
+    public function viewitem($id)
+    {
+        $dataitem = Item::where('id', $id)->get();
+        if (count($dataitem) == 0) {
+            return redirect(route('item'))->with('alert', 'Kesalahan!')->with('status', 'Data dengan ID ' . $id . ' tidak ditemukan!')->with('warna', 'danger');
+        } else {
+            return view('administrator.itemedit', [
+                'dataitem' => $dataitem
+            ]);
+        }
+    }
+    public function updateitem(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function transaction()
+    {
+        return view('administrator.transaction');
+    }
+    public function admin()
+    {
+        return view('administrator.admin');
     }
 }

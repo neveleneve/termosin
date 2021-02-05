@@ -9,7 +9,7 @@
     @yield('search')
     <ul class="navbar-nav ml-auto">
         <li class="nav-item nav-item-right">
-            <p class="nav-link">{{Auth::user()['nama']}}</p>
+            <a class="nav-link d-none d-md-block">{{Auth::user()['nama']}}</a>
         </li>
         <li class="nav-item nav-item-right">
             <a class="nav-link" href="/administrator/logout" onclick="javascript: return confirm('Keluar Sekarang?');"><i class="fa fa-sign-out-alt"></i></a>

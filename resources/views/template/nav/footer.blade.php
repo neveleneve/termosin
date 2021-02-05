@@ -25,6 +25,7 @@
                             <li><a href="{{url('/')}}">Beranda</a></li>
                             <li><a href="{{url('/about')}}">Tentang Kami</a></li>
                             <li><a href="{{url('/contact')}}">Kontak</a></li>
+                            <li><a href="{{url('/login')}}">Log In</a></li>
                         </ul>
                     </div>
                 </div>
