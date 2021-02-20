@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\ItemColor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
     public function index()
     {
         $allproduct = Item::get();
+        Storage::disk('public')->put('deskripsi/halo.txt', 'halo halo');
         return view('index', [
             'allproduct' => $allproduct
         ]);

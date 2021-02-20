@@ -7,6 +7,7 @@ use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -75,7 +76,35 @@ class AdminController extends Controller
     }
     public function updateitem(Request $request)
     {
-        dd($request->all());
+        $diskon = 0;
+        if ($request->diskonstate == 0) {
+            $diskon = 0;
+        } else {
+            if ($request->diskon == 0) {
+                $diskon = 10;
+            } else {
+                $diskon = $request->diskon;
+            }
+        }
+        Item::where('id', $request->id)->update([
+            'namaitem' => $request->namaitem,
+            'harga' => $request->harga,
+            'diskonstate' => $request->diskonstate,
+            'diskon' => $diskon
+        ]);
+
+        Storage::disk('public')->delete('deskripsi/' . $request->id . '.txt');
+        Storage::disk('public')->put('deskripsi/' . $request->id . '.txt', $request->deskripsi);
+
+        return redirect(route('item'));
+    }
+    public function itemimage($id)
+    {
+        // echo $id;
+        $item = Item::where('id', $id)->get();
+        return view('administrator.itemimage', [
+            'data' => $item
+        ]);
     }
 
     public function transaction()

@@ -25,7 +25,7 @@
                 <div class="product_img_slide owl-carousel">
                     @for ($i = 0; $i < $jumlah; $i++) 
                     <div class="single_product_img">
-                        <img src="{{asset('/images/item/'. $namagambar.'-'. $i .'.png')}}" class="img-fluid">
+                        <img src="{{asset('storage/item/'. $namagambar.'-'. $i .'.png')}}" class="img-fluid">
                 </div>
                 @endfor
             </div>
@@ -46,7 +46,8 @@
                         @endif
                     </ul>
                     <p>
-                        {{File::get(public_path('/images/desc/'.$dataitem[0]->id.'.txt'))}}
+                        {{-- {{File::get(public_path('/images/desc/'.$dataitem[0]->id.'.txt'))}} --}}
+                        {{Storage::disk('public')->get('deskripsi/'.$dataitem[0]->id.'.txt')}}
                     </p>
                     <form action="/beli" method="post">
                         {{ csrf_field() }}

@@ -73,7 +73,7 @@
                                     <div class="col-12">
                                         <label for="deskripsi">Deskripsi Item</label>
                                         <textarea required name="deskripsi" id="deskripsi" cols="30" rows="10"
-                                            class="form-control">{{File::get(public_path('/images/desc/'.$dataitem[0]->id.'.txt'))}}</textarea>
+                                            class="form-control">{{Storage::disk('public')->get('deskripsi/'.$dataitem[0]->id.'.txt')}}</textarea>
                                     </div>
                                 </div>
                                 <div class="row">
