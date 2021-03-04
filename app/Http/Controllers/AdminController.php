@@ -100,11 +100,20 @@ class AdminController extends Controller
     }
     public function itemimage($id)
     {
-        // echo $id;
         $item = Item::where('id', $id)->get();
         return view('administrator.itemimage', [
             'data' => $item
         ]);
+    }
+
+    public function additem()
+    {
+        return view('administrator.itemadd');
+    }
+    public function addingitem(Request $data)
+    {
+        dd($data->all());
+        
     }
 
     public function transaction()

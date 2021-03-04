@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/administrator/logout', 'AdminController@logout');
 Route::post('/administrator/login', 'AdminController@logging_in');
 
-Auth::routes();
+
+
 Route::get('/login', 'AdminController@login')->name('login');
 // Route Umum
 Route::get('/', 'ItemController@index');
@@ -47,7 +48,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     // ------------------------------------------------------------------------------//
     Route::get('/administrator/item/hapus/{id}', 'AdminController@hapusitem')->name('hapusitem');
     // ------------------------------------------------------------------------------//
-    Route::get('/administrator/itemadd', 'AdminController@additem')->name('additem');
+    Route::get('/administrator/item/add', 'AdminController@additem')->name('additem');
+    Route::post('/administrator/item/add', 'AdminController@addingitem')->name('addingitem');
 
     Route::get('/administrator/transaction', 'AdminController@transaction');
     
