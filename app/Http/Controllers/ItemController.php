@@ -14,9 +14,9 @@ class ItemController extends Controller
     {
         $allproduct = Item::get();
         $images = Item_Image::all();
-        Storage::disk('public')->put('deskripsi/halo.txt', 'halo halo');
         return view('index', [
-            'allproduct' => $allproduct
+            'allproduct' => $allproduct,
+            'image' => $images
         ]);
     }
 

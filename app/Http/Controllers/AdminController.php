@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Administrator;
 use App\Item;
+use App\Item_Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -105,15 +106,42 @@ class AdminController extends Controller
             'data' => $item
         ]);
     }
-
+    private function item_code()
+    {
+        $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+        return $randomString;
+    }
     public function additem()
     {
         return view('administrator.itemadd');
     }
     public function addingitem(Request $data)
     {
-        dd($data->all());
-        
+        $itemcode = $this->item_code();
+        if (($data->diskonstate == 1 && $data->diskon == 0) || ($data->diskonstate == 1 && $data->diskon == null)) {
+            $diskon = "10";
+        }else {
+            $diskon = $data->diskon;
+        }
+        $dataitem = [
+            'code' => $itemcode,
+            'namaitem' => $data->nama,
+            'harga' => $data->harga,
+            'diskonstate' => $data->diskonstate,
+            'diskon' => $diskon,
+            'img' => $data->file('files')[0]->getClientOriginalName(),
+        ];
+
+        $totalimage = count($data->file('files'));
+        for ($i=0; $i < $totalimage; $i++) {
+            Item_Image::create([
+                'code_item' => $itemcode,
+                'image' => $data->file('files')[$i]->getClientOriginalName()
+            ]);
+        }
+        Item::insert([
+            $dataitem
+        ]);
     }
 
     public function transaction()

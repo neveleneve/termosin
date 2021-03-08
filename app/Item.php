@@ -8,9 +8,9 @@ class Item extends Model
 {
     protected $table = 'item';
     protected $fillable = [
+        'code',
         'namaitem',
         'harga',
-        'deskripsi',
         'diskonstate',
         'diskon',
         'img'
