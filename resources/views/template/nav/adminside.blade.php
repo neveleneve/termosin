@@ -35,13 +35,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('keranjang') }}"
-                        class="nav-link {{ Request::is('administrator/keranjang*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-shopping-bag"></i>
-                        <p>Keranjang</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('administrator') }}"
                         class="nav-link {{ Request::is('administrator/admin*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-lock"></i>

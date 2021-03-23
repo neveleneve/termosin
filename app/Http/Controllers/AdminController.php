@@ -7,6 +7,7 @@ use App\Item;
 use App\Item_Image;
 use App\ItemColor;
 use App\Keranjang;
+use App\Master_Transaksi;
 use App\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -253,7 +254,12 @@ class AdminController extends Controller
 
     public function transaction()
     {
-        return view('administrator.transaction');
+        $mastertransaksi = Master_Transaksi::get();
+        $trx = Transaksi::all();
+        return view('administrator.transaction', [
+            'data' => $mastertransaksi,
+            'trx' => $mastertransaksi
+        ]);
     }
     public function admin()
     {

@@ -60,6 +60,7 @@ class PenggunaController extends Controller
                 'harga' => $req->harga,
                 'status' => '0'
             ]);
+            // dd($datakeranjang->all());
             Keranjang::create($datakeranjang->all());
             return redirect('/keranjang');
         } else {
