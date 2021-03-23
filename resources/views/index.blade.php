@@ -23,8 +23,8 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="shadow rounded single-product">
                     <div class="product-img">
-                        <a href="/item/{{ $item->id }}">
-                            <img class="rounded" src="{{asset('images/item/'.$item->img)}}">
+                        <a href="/item/{{ $item->code }}">
+                            <img class="rounded" src="{{asset('storage/item/'.$item->img)}}">
                         </a>
                         @if ($item->diskonstate == 0)
 
@@ -38,7 +38,7 @@
                         @endif
                     </div>
                     <div class="product-caption">
-                        <h4><a href="/item/{{ $item->id }}">{{$item->namaitem}}</a>
+                        <h4><a href="/item/{{ $item->code }}">{{$item->namaitem}}</a>
                         </h4>
                         <div class="price">
                             <ul class="pb-3">

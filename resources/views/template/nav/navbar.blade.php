@@ -28,7 +28,7 @@
                         <ul class="header-right f-right d-none d-xl-block justify-content-between">
                             <li class="d-none d-lg-block">
                                 <div class="form-box f-right ">
-                                    <form action="/search" method="get">
+                                    <form action="{{route('search')}}" method="get">
                                         <input type="text" name="cari" placeholder="Cari" value="{{isset($datacari) ? $datacari : null}}">
                                         <div class="search-icon">
                                             <i class="fas fa-search special-tag"></i>

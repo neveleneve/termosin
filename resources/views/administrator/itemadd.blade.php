@@ -43,19 +43,22 @@
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <label for="nama">Nama Item</label>
-                                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Item" required>
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="Nama Item" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <label for="deskripsi">Deksripsi Item</label>
-                                            <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="5" placeholder="Deskripsi Item"></textarea>
+                                            <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30"
+                                                rows="5" placeholder="Deskripsi Item" required></textarea>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <label for="harga">Harga</label>
-                                            <input type="number" name="harga" id="harga" class="form-control" placeholder="Harga" min="0" required>
+                                            <input type="number" name="harga" id="harga" class="form-control"
+                                                placeholder="Harga" min="0" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -75,14 +78,16 @@
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <label for="warna">Warna Item</label>
-                                            <input class="form-control" type="text" name="warna" id="warna" placeholder="Warna Item (Contoh: Merah, Hijau, Kuning)">
+                                            <input required class="form-control" type="text" name="warna" id="warna"
+                                                placeholder="Warna Item (Contoh: Merah,Hijau,Kuning)">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <label for="files">Gambar Item</label>
                                             <input class="form-control" type="file" name="files[]" id="files"
-                                                onchange="updateList()" accept="image/x-png,image/gif,image/jpeg" multiple>
+                                                onchange="updateList()" accept="image/x-png,image/gif,image/jpeg" multiple
+                                                required>
                                         </div>
                                     </div>
                                     <p>Selected files:</p>

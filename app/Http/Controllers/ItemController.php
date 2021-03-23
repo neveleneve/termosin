@@ -12,19 +12,17 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $allproduct = Item::get();
-        $images = Item_Image::all();
+        $allproduct = Item::where('status', 1)->get();
         return view('index', [
-            'allproduct' => $allproduct,
-            'image' => $images
+            'allproduct' => $allproduct
         ]);
     }
 
     public function show($id)
     {
-        $images = Item_Image::where('id_item', $id)->get();
-        $item = Item::where('id', $id)->get();
-        $datawarna = ItemColor::where('id_item', $id)->get();
+        $images = Item_Image::where('code_item', $id)->get();
+        $item = Item::where('code', $id)->get();
+        $datawarna = ItemColor::where('code_item', $id)->get();
         return view('item', [
             'images' => $images,
             'dataitem' => $item,

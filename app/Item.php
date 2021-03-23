@@ -13,6 +13,7 @@ class Item extends Model
         'harga',
         'diskonstate',
         'diskon',
+        'status',
         'img'
     ];
 }

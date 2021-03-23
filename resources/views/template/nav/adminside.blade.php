@@ -10,32 +10,39 @@
                 <img src="{{asset('admin/dist/img/avatar.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="/administrator" class="d-block">{{Auth::user()->level == 0 ? 'Administrator' : 'Super Administrator'}}</a>
+                <a href="{{ route('dashboard') }}" class="d-block">{{Auth::user()->level == 0 ? 'Administrator' : 'Super Administrator'}}</a>
             </div>
         </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/administrator" class="nav-link {{ Request::is('administrator') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('administrator') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/administrator/item" class="nav-link {{ Request::is('administrator/item*') ? 'active' : '' }}">
+                    <a href="{{ route('item') }}" class="nav-link {{ Request::is('administrator/item*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-box"></i>
                         <p>Item</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/administrator/transaction"
+                    <a href="{{ route('transaction') }}"
                         class="nav-link {{ Request::is('administrator/transaction*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-exchange-alt"></i>
                         <p>Transaksi</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/administrator/admin"
+                    <a href="{{ route('keranjang') }}"
+                        class="nav-link {{ Request::is('administrator/keranjang*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-shopping-bag"></i>
+                        <p>Keranjang</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('administrator') }}"
                         class="nav-link {{ Request::is('administrator/admin*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-lock"></i>
                         <p>Administrator</p>

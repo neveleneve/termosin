@@ -8,10 +8,8 @@ use App\Master_Transaksi;
 use App\Provinsi;
 use App\Transaksi;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Str;
 
 
 class PenggunaController extends Controller
@@ -36,12 +34,11 @@ class PenggunaController extends Controller
                     $where .= ' OR item.namaitem LIKE "%' . $datacari[$i] . '%"';
                 }
             }
-
             $contoh = DB::select('SELECT item.*, sum(transaksi.jumlah) as jumlahbeli, (item.harga - (item.harga * item.diskon/100)) as price, item.diskon as diskon
                 FROM transaksi
-                JOIN item ON transaksi.id_item = item.id
+                RIGHT JOIN item ON transaksi.id_item = item.id
                 ' . $where . '
-                GROUP BY item.id
+                GROUP BY item.code
                 ORDER BY ' . $datasort);
 
             return view('pencarian', [
@@ -72,14 +69,16 @@ class PenggunaController extends Controller
     public function keranjang(Request $req)
     {
         $datakeranjang = DB::select(
-            'select k.id as id, b.namaitem as namabarang, b.img as images, c.warna as warna, k.jumlah as jumlah, k.harga as harga
+            'select k.id_item as id_item, k.id as id, b.namaitem as namabarang, b.img as images, c.warna as warna, k.jumlah as jumlah, k.harga as harga
             from keranjang as k
             join item as b on k.id_item = b.id
             join item_color as c on k.id_item_color = c.id
             where k.ipaddress = "' . $req->ip() . '" and k.status = "0"'
         );
+        $dataitem = Item::get();
         return view('keranjang', [
-            'datakeranjang' => $datakeranjang
+            'datakeranjang' => $datakeranjang,
+            'dataitem' => $dataitem,
         ]);
     }
 

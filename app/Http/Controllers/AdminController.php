@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Administrator;
 use App\Item;
 use App\Item_Image;
+use App\ItemColor;
+use App\Keranjang;
+use App\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -93,17 +96,72 @@ class AdminController extends Controller
             'diskonstate' => $request->diskonstate,
             'diskon' => $diskon
         ]);
-
-        Storage::disk('public')->delete('deskripsi/' . $request->id . '.txt');
-        Storage::disk('public')->put('deskripsi/' . $request->id . '.txt', $request->deskripsi);
+        Storage::disk('public')->delete('deskripsi/' . $request->code . '.txt');
+        Storage::disk('public')->put('deskripsi/' . $request->code . '.txt', $request->deskripsi);
 
         return redirect(route('item'));
     }
+
+    public function hapusitem($id)
+    {
+        $cekstatus = Item::where('code', $id)->get();
+        if ($cekstatus[0]['status'] == 0) {
+            Item::where('code', $id)->update([
+                'status' => 1
+            ]);
+            return redirect(route('item'))->with('alert', 'Data berhasil diaktifkan kembali!')->with('warna', 'success');
+        } else {
+            Item::where('code', $id)->update([
+                'status' => 0
+            ]);
+            return redirect(route('item'))->with('alert', 'Data berhasil di-non-aktifkan!')->with('warna', 'success');
+        }
+    }
+
+    public function hapuswarna($id)
+    {
+        $cekwarnatransaksi = Transaksi::where('id_warna', $id)->count();
+        $cekwarnawishlist = Keranjang::where('id_item_color', $id)->count();
+        $data = ItemColor::where('id', $id)->get();
+        if ($cekwarnawishlist == 0 && $cekwarnatransaksi == 0) {
+            ItemColor::where('id', $id)->delete();
+            return redirect(route('warnaitem',  ['id' => $data[0]->code_item]))->with('alert', 'Data warna item berhasil dihapus!')->with('warna', 'success');
+        } else {
+            return redirect(route('warnaitem',  ['id' => $data[0]->code_item]))->with('alert', 'Data warna item tidak dapat dihapus karena sudah berada di keranjang dan/atau transaksi')->with('warna', 'danger');
+        }
+    }
+
+    public function addingitemwarna(Request $request)
+    {
+        $datawarna = ItemColor::where([
+            'code_item' => $request->code_item,
+            'warna' => $request->warna,
+        ])->get();
+        if (count($datawarna) == 0) {
+            ItemColor::insert([
+                'code_item' => $request->code_item,
+                'warna' => $request->warna,
+            ]);
+            return redirect(route('warnaitem',  ['id' => $request->code_item]))->with('alert', 'Data warna item berhasil ditambah!')->with('warna', 'success');
+        } else {
+            return redirect(route('warnaitem',  ['id' => $request->code_item]))->with('alert', 'Warna item sudah ada! Silahkan ulangi!')->with('warna', 'danger');
+        }
+    }
+
+    public function itemwarna($id)
+    {
+        $dataitem = Item::where('code', $id)->get();
+        $datawarna = ItemColor::where('code_item', $id)->get();
+        return view('administrator.itemcolor', [
+            'dataitem' => $dataitem,
+            'datawarna' => $datawarna
+        ]);
+    }
     public function itemimage($id)
     {
-        $item = Item::where('id', $id)->get();
+        $item = Item_Image::where('code_item', $id)->get();
         return view('administrator.itemimage', [
-            'data' => $item
+            'data' => $item,
         ]);
     }
     private function item_code()
@@ -115,12 +173,63 @@ class AdminController extends Controller
     {
         return view('administrator.itemadd');
     }
+
+    private function tambahDataItem($data)
+    {
+        Item::insert([
+            $data
+        ]);
+    }
+
+    public function hapusitemimage($id)
+    {
+        Item_Image::where('image', $id)->delete();
+        Storage::disk('public')->delete('item/' . $id);
+        $iditem = substr($id, 0, 10);
+        return redirect(route('imageitem', ['id' => $iditem]));
+    }
+
+    public function additemimage(Request $data)
+    {
+        $this->tambahDataImage($data, $data->id, 'images');
+        return redirect(route('imageitem', ['id' => $data->id]));
+    }
+
+    private function tambahDataImage($dataimg, $code, $name)
+    {
+        $totalimage = count($dataimg->file($name));
+        for ($i = 0; $i < $totalimage; $i++) {
+            Item_Image::create([
+                'code_item' => $code,
+                'image' => $code . '-' . $i . '.png'
+            ]);
+            Storage::putFileAs('public/item', $dataimg->file($name)[$i], $code . '-' . $i . '.png');
+        }
+    }
+
+    private function addDescription($code, $data)
+    {
+        Storage::disk('public')->put('deskripsi/' . $code . '.txt', $data->deskripsi);
+    }
+
+    private function addColor($color, $code)
+    {
+        $daftarwarna = explode(',', $color);
+        for ($i = 0; $i < count($daftarwarna); $i++) {
+            ItemColor::create([
+                'code_item' => $code,
+                'warna' => $daftarwarna[$i],
+            ]);
+        }
+    }
+
     public function addingitem(Request $data)
     {
+        // dd($data->file('files')[0]->getClientOriginalName());
         $itemcode = $this->item_code();
         if (($data->diskonstate == 1 && $data->diskon == 0) || ($data->diskonstate == 1 && $data->diskon == null)) {
             $diskon = "10";
-        }else {
+        } else {
             $diskon = $data->diskon;
         }
         $dataitem = [
@@ -129,19 +238,17 @@ class AdminController extends Controller
             'harga' => $data->harga,
             'diskonstate' => $data->diskonstate,
             'diskon' => $diskon,
-            'img' => $data->file('files')[0]->getClientOriginalName(),
+            'img' => $itemcode . '-0.png',
         ];
-
-        $totalimage = count($data->file('files'));
-        for ($i=0; $i < $totalimage; $i++) {
-            Item_Image::create([
-                'code_item' => $itemcode,
-                'image' => $data->file('files')[$i]->getClientOriginalName()
-            ]);
-        }
-        Item::insert([
-            $dataitem
-        ]);
+        // Add data to item table
+        $this->tambahDataItem($dataitem);
+        // Add data to item color table
+        $this->addColor($data->warna, $itemcode);
+        // Add image data to table and folder
+        $this->tambahDataImage($data, $itemcode, 'files');
+        // Add description .txt to folder
+        $this->addDescription($itemcode, $data);
+        return redirect(route('item'));
     }
 
     public function transaction()
